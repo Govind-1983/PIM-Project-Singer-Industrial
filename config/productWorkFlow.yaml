@@ -1,0 +1,291 @@
+pimcore:
+    workflows:
+        Product_workflows:
+            label: 'Product'
+            type: 'state_machine'
+            supports:
+            - 'Pimcore\Model\DataObject\Product'
+
+            marking_store:
+              type: single_state
+              arguments:
+                - workflowState
+
+            places:
+                NewProduct:
+                  label: 'New Product'
+                  color: '#377ea9'
+                  permissions:
+                    - condition: "is_fully_authenticated() and 'ROLE_PIMCORE_ADMIN' in role_names"
+                      modify: true
+                    - condition: "is_fully_authenticated() and 'ROLE_VENDOR_PORTAL_USER' in role_names" 
+                      publish: false
+                      delete: false
+                      save: true
+                    - modify: false
+                #Basic Approve Start here
+                SentForDataReview:
+                  label: 'Sent For Data Review'
+                  color: '#377ea9'
+                  permissions:
+                    - condition: "is_fully_authenticated() and 'ROLE_PIMCORE_ADMIN' in role_names"
+                      modify: true
+                    - condition: "is_fully_authenticated() and 'ROLE_DATA_QUALITY_SPECIALIST' in role_names"
+                      publish: false
+                      delete: false
+                      save: true
+                    - modify: false
+    
+                NeedChangesForDataReview:
+                  label: 'Need Changes To Complete Data Review'
+                  color: '#377ea9'
+                  permissions:
+                    - condition: "is_fully_authenticated() and 'ROLE_PIMCORE_ADMIN' in role_names"
+                      modify: true
+                    - condition: "is_fully_authenticated() and 'ROLE_VENDOR_PORTAL_USER' in role_names"
+                      publish: false
+                      delete: false
+                      save: true
+                    - modify: false
+    
+                DataReviewCompleted:
+                  label: 'Data Review Completed'
+                  color: '#377ea9'
+                  permissions:
+                    - condition: "is_fully_authenticated() and 'ROLE_PIMCORE_ADMIN' in role_names"
+                      modify: true
+                    - condition: "is_fully_authenticated() and 'ROLE_DATA_QUALITY_SPECIALIST' in role_names"
+                      publish: false
+                      delete: false
+                      save: true
+                    - modify: false
+    
+                #Field Approve Start here
+                SentForDataEnrichment:
+                  label: 'Sent For Data Enrichment'
+                  color: '#377ea9'
+                  permissions:
+                    - condition: "is_fully_authenticated() and 'ROLE_PIMCORE_ADMIN' in role_names"
+                      modify: true
+                    - condition: "is_fully_authenticated() and 'ROLE_INTERNAL_TEAM_USER' in role_names"
+                      publish: false
+                      delete: false
+                      save: true
+                    - modify: false
+     
+                DataEnrichmentCompleted:
+                  label: 'Data Enrichment Completed'
+                  color: '#377ea9'
+                  permissions:
+                    - condition: "is_fully_authenticated() and 'ROLE_PIMCORE_ADMIN' in role_names"
+                      modify: true
+                    - condition: "is_fully_authenticated() and 'ROLE_INTERNAL_TEAM_USER' in role_names"
+                      publish: false
+                      delete: false
+                      save: true
+                    - modify: false
+       
+                                         
+                #Product Approve Start here
+                SentForDataApproval:
+                  label: 'Sent For Data Approval'
+                  color: '#377ea9'
+                  permissions:
+                    - condition: "is_fully_authenticated() and 'ROLE_PIMCORE_ADMIN' in role_names"
+                      modify: true
+                    - condition: "is_fully_authenticated() and 'ROLE_AUTHORIZED_APPROVER' in role_names"
+                      publish: false
+                      delete: false
+                      save: true
+                    - modify: false
+      
+                NeedImprovementsForApproval:
+                  label: 'Need Improvements For Data Approval'
+                  color: '#377ea9'
+                  permissions:
+                    - condition: "is_fully_authenticated() and 'ROLE_PIMCORE_ADMIN' in role_names"
+                      modify: true
+                    - condition: "is_fully_authenticated() and 'ROLE_INTERNAL_TEAM_USER' in role_names"
+                      publish: false
+                      delete: false
+                      save: true
+                    - modify: false
+     
+                DataApprovalCompleted:
+                  label: 'Data Approval Completed'
+                  color: '#377ea9'
+                  permissions:
+                    - condition: "is_fully_authenticated() and 'ROLE_PIMCORE_ADMIN' in role_names"
+                      modify: true
+                    - condition: "is_fully_authenticated() and 'ROLE_AUTHORIZED_APPROVER' in role_names"
+                      publish: false
+                      delete: false
+                      save: true
+                    - modify: false
+
+                SentForDataPublish:
+                  label: 'Sent For Data Publishing'
+                  color: '#377ea9'
+                  permissions:
+                    - condition: "is_fully_authenticated() and 'ROLE_PIMCORE_ADMIN' in role_names"
+                      modify: true
+                    - condition: "is_fully_authenticated() and 'ROLE_CHANNEL_CATALOG_MANAGER' in role_names"
+                      publish: false
+                      delete: false
+                      save: true
+                    - modify: false
+
+                DataPublishCompleted:
+                  label: 'Data Published Completed'
+                  color: '#377ea9'
+                  permissions:
+                    - condition: "is_fully_authenticated() and 'ROLE_PIMCORE_ADMIN' in role_names"
+                      modify: true
+                    - condition: "is_fully_authenticated() and 'ROLE_CHANNEL_CATALOG_MANAGER' in role_names"
+                      publish: false
+                      delete: false
+                      save: true
+                    - modify: false
+                            
+
+            #Transitions Start here                                              
+            transitions:
+                #Basic approve transition 
+                SentForDataReview:
+                      from: [NewProduct,NeedChangesForDataReview]
+                      to: SentForDataReview
+                      options:
+                        label: 'Send For Data Review'
+                        notes:
+                              commentEnabled: true
+                              commentRequired: true
+                        notificationSettings:
+                          - notifyRoles: ['DATA_QUALITY_SPECIALIST']
+                            channelType:
+                              - pimcore_notification
+                      guard: "is_fully_authenticated() and is_granted('ROLE_VENDOR_PORTAL_USER')"                
+                NeedChangesForDataReview:
+                      from: SentForDataReview
+                      to: NeedChangesForDataReview
+                      options:
+                        label: 'Need Changes For Data Review'
+                        notes:
+                              commentEnabled: true
+                              commentRequired: true
+                        notificationSettings:
+                          - notifyRoles: ['VENDOR_PORTAL_USER']
+                            channelType:
+                              - pimcore_notification
+                              
+                      guard: "is_fully_authenticated() and is_granted('ROLE_DATA_QUALITY_SPECIALIST')"
+
+                      # or is_granted('ROLE_VENDOR_PORTAL_USER')
+                DataReviewCompleted:
+                      from: SentForDataReview
+                      to: DataReviewCompleted
+                      options:
+                        label: 'Data Review Completed'
+                        notes:
+                              commentEnabled: true
+                              commentRequired: true
+                        notificationSettings:
+                          - notifyRoles: ['VENDOR_PORTAL_USER']
+                            channelType:
+                              - pimcore_notification
+
+                      guard: "is_fully_authenticated() and is_granted('ROLE_DATA_QUALITY_SPECIALIST')"  
+                #Field approve transition 
+                SentForDataEnrichment:
+                      from: DataReviewCompleted
+                      to: SentForDataEnrichment
+                      options:
+                        label: 'Send For Data Enrichment'
+                        notes:
+                              commentEnabled: true
+                              commentRequired: true
+                        notificationSettings:
+                          - notifyRoles: ['INTERNAL_TEAM_USER']
+                            channelType:
+                              - pimcore_notification
+                      guard: "is_fully_authenticated() and is_granted('ROLE_DATA_QUALITY_SPECIALIST') "
+                DataEnrichmentCompleted:
+                      from: SentForDataEnrichment
+                      to: DataEnrichmentCompleted
+                      options:
+                        label: 'Data Enrichment Completed'
+                        notes:
+                              commentEnabled: true
+                              commentRequired: true   
+                        notificationSettings: 
+                              - notifyRoles: ['DATA_QUALITY_SPECIALIST']
+                                channelType:
+                                  - pimcore_notification
+                      guard: "is_fully_authenticated() and is_granted('ROLE_INTERNAL_TEAM_USER')"
+                SentForDataApproval:
+                      from: [DataEnrichmentCompleted, NeedImprovementsForApproval]
+                      to: SentForDataApproval
+                      options:
+                        label: 'Send For Data Approval'
+                        notes:
+                              commentEnabled: true
+                              commentRequired: true
+                        notificationSettings:
+                          - notifyRoles: ['AUTHORIZED_APPROVER']
+                            channelType:
+                              - pimcore_notification
+                      guard: "is_fully_authenticated() and is_granted('ROLE_INTERNAL_TEAM_USER')"
+               
+                #Product approve transition 
+                NeedImprovementsForApproval:
+                      from: SentForDataApproval
+                      to: NeedImprovementsForApproval
+                      options:
+                        label: 'Need Improvements to Approve'
+                        notes:
+                              commentEnabled: true
+                              commentRequired: true
+                        notificationSettings:
+                          - notifyRoles: ['INTERNAL_TEAM_USER']
+                            channelType:
+                              - pimcore_notification
+                      guard: "is_fully_authenticated() and is_granted('ROLE_AUTHORIZED_APPROVER')"
+                DataApprovalCompleted:
+                      from: SentForDataApproval
+                      to: DataApprovalCompleted
+                      options:
+                        label: 'Data Approval Completed'
+                        notes:
+                              commentEnabled: true
+                              commentRequired: true      
+                        notificationSettings:
+                          - notifyRoles: ['INTERNAL_TEAM_USER']
+                            channelType:
+                              - pimcore_notification
+                      guard: "is_fully_authenticated() and is_granted('ROLE_AUTHORIZED_APPROVER')"
+                SentForDataPublish:
+                      from: DataApprovalCompleted
+                      to: SentForDataPublish
+                      options:
+                        label: 'Sent For Data Published'
+                        notes:
+                              commentEnabled: true
+                              commentRequired: true
+                        notificationSettings:
+                          - notifyRoles: ['CHANNEL_CATALOG_MANAGER']
+                            channelType:
+                              - pimcore_notification
+                      guard: "is_fully_authenticated() and is_granted('ROLE_AUTHORIZED_APPROVER')"
+                       
+                DataPublishCompleted:
+                      from: SentForDataPublish
+                      to:   DataPublishCompleted
+                      options:
+                        label: 'Data published Completed'
+                        notes:
+                              commentEnabled: true
+                              commentRequired: true
+                        notificationSettings: 
+                              - notifyRoles: ['ROLE_AUTHORIZED_APPROVER']
+                                channelType:
+                                  - pimcore_notification
+                      guard: "is_fully_authenticated() and is_granted('ROLE_CHANNEL_CATALOG_MANAGER')"
