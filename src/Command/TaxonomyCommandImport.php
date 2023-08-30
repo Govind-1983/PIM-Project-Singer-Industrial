@@ -9,6 +9,7 @@ use Pimcore\Model\DataObject;
 use PhpOffice\PhpSpreadsheet\IOFactory;
 use Psr\Log\LoggerInterface;
 use Exception;
+use Symfony\Component\Console\Input\InputOption;
 
 class TaxonomyCommandImport extends AbstractCommand
 {
@@ -37,16 +38,23 @@ class TaxonomyCommandImport extends AbstractCommand
 
     protected function configure()
     {
-        $this->setName('Import:Taxonomy:import')->setDescription('Using this command you can import the taxonomy data.');
+        $this->setName('Import:Taxonomy:import')->setDescription('Using this command you can import the taxonomy data.')
+            ->addArgument('product_asset_id' , InputOption::VALUE_OPTIONAL, 'Product Asset Excel ID');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         try {
             $this->taxonomyLogger->info("PROCESS_START :: To import taxonomy data");
+            $inputAssetId = $input->getArgument('product_asset_id');
 
             $filePath = self::ASSET_FOLDER_NAME . self::FILE_NAME . '.xlsx';
             $asset = \Pimcore\Model\Asset::getByPath($filePath);
+
+            if (!empty($inputAssetId)) {
+                $filePath = \Pimcore\Model\Asset::getById($inputAssetId[0])->getFullPath();
+                $asset = \Pimcore\Model\Asset::getByPath($filePath);
+            }
 
             $sourceFile = PIMCORE_WEB_ROOT . '/var/assets' . $filePath;
 
