@@ -39,7 +39,7 @@ class TaxonomyCommandImport extends AbstractCommand
     protected function configure()
     {
         $this->setName('Import:Taxonomy:import')->setDescription('Using this command you can import the taxonomy data.')
-            ->addArgument('product_asset_id' , InputOption::VALUE_OPTIONAL, 'Product Asset Excel ID');
+            ->addArgument('product_asset_id', InputOption::VALUE_OPTIONAL, 'Product Asset Excel ID');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
@@ -89,9 +89,13 @@ class TaxonomyCommandImport extends AbstractCommand
             unset($taxonomySheetData[0]);
             foreach ($taxonomySheetData as $taxonomydata) {
                 $index = 0;
+                $parentFolder = \Pimcore\Model\DataObject\Service::createFolderByPath(self::DATA_OBJECT_FOLDER_NAME);
+                $parentId = $parentFolder->getId();
                 foreach ($taxonomydata as $key => $data) {
+
                     $taxonomyDataIndex = self::TAXONOMY_MAPPING['Taxonomy'] .  $index;
                     if (array_search($taxonomyDataIndex, $headers) && $data) {
+                        $data = str_replace('/', '-', $data);
                         //Check existing data
                         $alreadyExist = $this->checkExistingKey($data);
                         if ($alreadyExist) {
@@ -99,11 +103,7 @@ class TaxonomyCommandImport extends AbstractCommand
                         } else {
                             $taxonomyObj = new DataObject\Taxonomy();
                             $taxonomyObj->setKey($data);
-                            if (empty($parentId)) {
-                                $taxonomyObj->setParent(\Pimcore\Model\DataObject\Service::createFolderByPath(self::DATA_OBJECT_FOLDER_NAME));
-                            } else {
-                                $taxonomyObj->setParentId($parentId);
-                            }
+                            $taxonomyObj->setParentId($parentId);
                             $taxonomyObj->setName($data);
                             $taxonomyObj->setPublished(true);
                             $taxonomyObj->save();
