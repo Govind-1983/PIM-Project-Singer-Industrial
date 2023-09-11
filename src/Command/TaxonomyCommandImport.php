@@ -105,6 +105,7 @@ class TaxonomyCommandImport extends AbstractCommand
                             $taxonomyObj->setKey($data);
                             $taxonomyObj->setParentId($parentId);
                             $taxonomyObj->setName($data);
+                            $taxonomyObj->setTaxonomyId(strtoupper(substr(md5(microtime()), 0, 4)));
                             $taxonomyObj->setPublished(true);
                             $taxonomyObj->save();
                             $parentId = $taxonomyObj->getId();

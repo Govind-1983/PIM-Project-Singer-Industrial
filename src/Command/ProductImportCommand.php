@@ -12,6 +12,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 use \Pimcore\Model\DataObject\ClassDefinition\Data\InputQuantityValue;
 use \Pimcore\Model\Asset\Image;
 use \Pimcore\Model\Asset;
+use OpenSpout\Reader\Common\Creator\ReaderFactory;
 
 class ProductImportCommand extends AbstractCommand
 {
@@ -143,34 +144,16 @@ class ProductImportCommand extends AbstractCommand
             }
             $productImportFile = PIMCORE_WEB_ROOT . '/var/assets' . $productFileObj->getFullPath();
 
-            $reader = \PhpOffice\PhpSpreadsheet\IOFactory::createReader(self::FILE_TYPE);
+            $this->importProducts($productImportFile);
 
-            $reader->setReadDataOnly(true);
+            $processedFolder = \Pimcore\Model\Asset\Service::createFolderByPath(($this->vendorName . self::PROCESSED_FOLDER));
 
-            $worksheetData = $reader->listWorksheetInfo($productImportFile);
-
-            if (!empty($worksheetData[0])) {
-
-                $reader->setLoadSheetsOnly($worksheetData[0]);
-
-                $spreadsheet = $reader->load($productImportFile);
-
-                $productData = $spreadsheet->getActiveSheet()->toArray();
-
-                $this->importProducts($productData);
-
-                $processedFolder = \Pimcore\Model\Asset\Service::createFolderByPath(($this->vendorName . self::PROCESSED_FOLDER));
-
-                if (!empty($this->logData)) {
-                    $this->createLogFile($fileName);
-                }
-
-                $productFileObj->setParent($processedFolder);
-                $productFileObj->save();
-            } else {
-                $this->setLogger('error', "No Active sheet found");
+            if (!empty($this->logData)) {
+                $this->createLogFile($fileName);
             }
 
+            $productFileObj->setParent($processedFolder);
+            $productFileObj->save();
             return 1;
         } catch (\Exception $e) {
             $this->setLogger('error', $e->getMessage());
@@ -178,23 +161,28 @@ class ProductImportCommand extends AbstractCommand
         }
     }
 
-    protected function importProducts($productData): void
+    protected function importProducts($productImportFile): void
     {
-        if (!empty($productData)) {
+        if (!empty($productImportFile)) {
 
-            $this->headers = array_flip($productData[0]);
-
-            unset($productData[0]);
-
-            $products = array_chunk($productData, self::BATCHES_LIMIT);
 
             $this->setLogger('info', "PROCESS_START :: To import product data");
 
-            foreach ($products as $batch => $product) {
+            $reader = ReaderFactory::createFromFile($productImportFile);
 
-                $this->setLogger('info', " BATCH " . $batch . ":: To import product  data");
+            $reader->open($productImportFile);
+
+            $sheet = $reader->getSheetIterator()->current();
+            foreach ($sheet->getRowIterator() as $key => $productArr) {
+                if ($key == 1) {
+                    $this->headers = array_flip($productArr->toArray());
+                    continue;
+                } else {
+                    $product =  [$productArr->toArray()];
+                }
 
                 foreach ($product as $data) {
+
                     try {
                         if (!empty($data)) {
 
@@ -470,14 +458,13 @@ class ProductImportCommand extends AbstractCommand
 
                                     if (self::IS_MIGRATION) {
                                         $fieldCollection = new \Pimcore\Model\DataObject\Fieldcollection();
-                                        for ($i = 0 ; $i <1; $i++) {
+                                        for ($i = 0; $i < 1; $i++) {
                                             $item =  new DataObject\Fieldcollection\Data\Channels();
                                             $item->setChannel($productFileObj = \Pimcore\Model\DataObject\Channels::getById(self::CHANNEL_IS_MIGRATION));
                                             $fieldCollection->add($item);
                                         }
                                         $productObject->setChannelDetails($fieldCollection);
                                         $productObject->setPublished(true);
-
                                     }
                                     $productObject->save();
                                     unset($productObject);
@@ -489,8 +476,6 @@ class ProductImportCommand extends AbstractCommand
                         $this->setLogger('error', $e->getTraceAsString());
                     }
                 }
-                $this->setLogger('info', " BATCH " . $batch . ":: To import taxonomy attributes data finish");
-
                 \Pimcore::collectGarbage();
             }
 
