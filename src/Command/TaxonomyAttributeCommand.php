@@ -18,11 +18,11 @@ class TaxonomyAttributeCommand extends AbstractCommand
 
     const ATTRIBUTE_MAPPING = [
         'END_NODE' => 'End Node',
-        'ATTRIBUTE' => 'Attribute',
+        'ATTRIBUTE' => 'Attribute Name',
         'DATA_TYPE' => 'Data Type',
         'DISPLAY_ORDER' => 'Display Order',
         'NAVIGATION_ORDER' => 'Navigation Order',
-        'UOM' => 'Uom',
+        'UOM' => 'UOM',
         'T2' => 'T2',
         'TAXONOMY_LEVELS_FIRST' => 'T'
     ];
@@ -41,7 +41,9 @@ class TaxonomyAttributeCommand extends AbstractCommand
     {
         $this
             ->setName('taxonomy-attributes:import')
-            ->setDescription('Run a Taxonomy Attribute Import.');
+            ->setDescription('Run a Taxonomy Attribute Import.')
+            ->addArgument('product_asset_id' , InputOption::VALUE_OPTIONAL, 'Product Asset Excel ID');
+
     }
 
     /**
@@ -53,9 +55,15 @@ class TaxonomyAttributeCommand extends AbstractCommand
     {
         try {
 
+            $inputAssetId = $input->getArgument('product_asset_id');
+
             $filePath =  self::ASSET_FOLDER_NAME . self::FILE_PATH;
 
             $taxonomyFile = \Pimcore\Model\Asset::getByPath($filePath);
+
+            if (!empty($inputAssetId)) {
+                $taxonomyFile = \Pimcore\Model\Asset::getById($inputAssetId[0]);
+            }
 
             $taxonomyAttributeFile = PIMCORE_WEB_ROOT . '/var/assets/' . $taxonomyFile->getFullPath();
 
@@ -224,7 +232,7 @@ class TaxonomyAttributeCommand extends AbstractCommand
             if (!empty($data[$headers[self::ATTRIBUTE_MAPPING['UOM']]])) {
 
                 $units = $data[$headers[self::ATTRIBUTE_MAPPING['UOM']]];
-                $definitionClassTypeName = "QuantityValue";
+                $definitionClassTypeName = "InputQuantityValue";
 
                 $definitionClassTypeName = '\\Pimcore\\Model\\DataObject\\ClassDefinition\\Data\\' . $definitionClassTypeName;
                 $definition = new $definitionClassTypeName();

@@ -9,18 +9,23 @@
  * - manufacturerName [input]
  * - brand [input]
  * - manufacturerPartNumber [input]
+ * - productType [input]
+ * - series [input]
  * - upc [input]
  * - unspsc [input]
  * - usTariffCode [input]
  * - vendorCageCode [input]
  * - nmfc [input]
+ * - applications [input]
  * - taxonomy [manyToManyRelation]
- * - channels [manyToManyRelation]
  * - workflowState [input]
+ * - channelDetails [fieldcollections]
  * - package_Height [input]
  * - packageLength [input]
  * - packageWidth [input]
  * - PackageWeight [input]
+ * - productWeightPounds [input]
+ * - productWeightKg [input]
  * - countryofOrigin [input]
  * - regularPrice [numeric]
  * - salePrice [numeric]
@@ -53,6 +58,7 @@
  * - standards [input]
  * - approvals [input]
  * - certifications [input]
+ * - warranty [input]
  */
 
 return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
@@ -62,7 +68,7 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
    'title' => '',
    'description' => '',
    'creationDate' => NULL,
-   'modificationDate' => 1689779373,
+   'modificationDate' => 1693310510,
    'userOwner' => 2,
    'userModification' => 2,
    'parentClass' => '',
@@ -153,7 +159,7 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                          'title' => 'SSIN (Unique ID)',
                          'tooltip' => '',
                          'mandatory' => false,
-                         'noteditable' => false,
+                         'noteditable' => true,
                          'index' => 0,
                          'locked' => false,
                          'style' => '',
@@ -319,6 +325,91 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                     array (
                       0 => 
                       \Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
+                         'name' => 'productType',
+                         'title' => 'Product Type',
+                         'tooltip' => '',
+                         'mandatory' => false,
+                         'noteditable' => false,
+                         'index' => 0,
+                         'locked' => false,
+                         'style' => '',
+                         'permissions' => NULL,
+                         'fieldtype' => '',
+                         'relationType' => false,
+                         'invisible' => false,
+                         'visibleGridView' => true,
+                         'visibleSearch' => true,
+                         'blockedVarsForExport' => 
+                        array (
+                        ),
+                         'defaultValue' => NULL,
+                         'columnLength' => 190,
+                         'regex' => '',
+                         'regexFlags' => 
+                        array (
+                        ),
+                         'unique' => false,
+                         'showCharCount' => false,
+                         'width' => 290,
+                         'defaultValueGenerator' => '',
+                      )),
+                      1 => 
+                      \Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
+                         'name' => 'series',
+                         'title' => 'Series',
+                         'tooltip' => '',
+                         'mandatory' => false,
+                         'noteditable' => false,
+                         'index' => 0,
+                         'locked' => false,
+                         'style' => '',
+                         'permissions' => NULL,
+                         'fieldtype' => '',
+                         'relationType' => false,
+                         'invisible' => false,
+                         'visibleGridView' => true,
+                         'visibleSearch' => true,
+                         'blockedVarsForExport' => 
+                        array (
+                        ),
+                         'defaultValue' => NULL,
+                         'columnLength' => 190,
+                         'regex' => '',
+                         'regexFlags' => 
+                        array (
+                        ),
+                         'unique' => false,
+                         'showCharCount' => false,
+                         'width' => 290,
+                         'defaultValueGenerator' => '',
+                      )),
+                    ),
+                     'locked' => false,
+                     'blockedVarsForExport' => 
+                    array (
+                    ),
+                     'fieldtype' => 'fieldcontainer',
+                     'layout' => 'hbox',
+                     'fieldLabel' => '',
+                     'labelWidth' => 180,
+                     'labelAlign' => 'left',
+                  )),
+                  3 => 
+                  \Pimcore\Model\DataObject\ClassDefinition\Layout\Fieldcontainer::__set_state(array(
+                     'name' => 'Field Container',
+                     'type' => NULL,
+                     'region' => NULL,
+                     'title' => NULL,
+                     'width' => '',
+                     'height' => '',
+                     'collapsible' => false,
+                     'collapsed' => false,
+                     'bodyStyle' => '',
+                     'datatype' => 'layout',
+                     'children' => 
+                    array (
+                      0 => 
+                      \Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
                          'name' => 'upc',
                          'title' => 'UPC/EAN',
                          'tooltip' => '',
@@ -388,7 +479,7 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                      'labelWidth' => 180,
                      'labelAlign' => 'left',
                   )),
-                  3 => 
+                  4 => 
                   \Pimcore\Model\DataObject\ClassDefinition\Layout\Fieldcontainer::__set_state(array(
                      'name' => 'Field Container',
                      'type' => NULL,
@@ -473,7 +564,7 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                      'labelWidth' => 180,
                      'labelAlign' => 'left',
                   )),
-                  4 => 
+                  5 => 
                   \Pimcore\Model\DataObject\ClassDefinition\Layout\Fieldcontainer::__set_state(array(
                      'name' => 'Field Container',
                      'type' => NULL,
@@ -517,6 +608,36 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                          'width' => 290,
                          'defaultValueGenerator' => '',
                       )),
+                      1 => 
+                      \Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
+                         'name' => 'applications',
+                         'title' => 'Applications',
+                         'tooltip' => '',
+                         'mandatory' => false,
+                         'noteditable' => false,
+                         'index' => 0,
+                         'locked' => false,
+                         'style' => '',
+                         'permissions' => NULL,
+                         'fieldtype' => '',
+                         'relationType' => false,
+                         'invisible' => false,
+                         'visibleGridView' => false,
+                         'visibleSearch' => false,
+                         'blockedVarsForExport' => 
+                        array (
+                        ),
+                         'defaultValue' => NULL,
+                         'columnLength' => 190,
+                         'regex' => '',
+                         'regexFlags' => 
+                        array (
+                        ),
+                         'unique' => false,
+                         'showCharCount' => false,
+                         'width' => '',
+                         'defaultValueGenerator' => '',
+                      )),
                     ),
                      'locked' => false,
                      'blockedVarsForExport' => 
@@ -528,7 +649,7 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                      'labelWidth' => 180,
                      'labelAlign' => 'left',
                   )),
-                  5 => 
+                  6 => 
                   \Pimcore\Model\DataObject\ClassDefinition\Data\ManyToManyRelation::__set_state(array(
                      'name' => 'taxonomy',
                      'title' => 'Taxonomy',
@@ -572,63 +693,6 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                      'documentsAllowed' => false,
                      'documentTypes' => 
                     array (
-                      0 => 
-                      array (
-                        'documentTypes' => '',
-                      ),
-                    ),
-                     'enableTextSelection' => false,
-                     'width' => '',
-                     'height' => '',
-                  )),
-                  6 => 
-                  \Pimcore\Model\DataObject\ClassDefinition\Data\ManyToManyRelation::__set_state(array(
-                     'name' => 'channels',
-                     'title' => 'Channels',
-                     'tooltip' => '',
-                     'mandatory' => false,
-                     'noteditable' => false,
-                     'index' => 0,
-                     'locked' => false,
-                     'style' => '',
-                     'permissions' => NULL,
-                     'fieldtype' => '',
-                     'relationType' => true,
-                     'invisible' => false,
-                     'visibleGridView' => true,
-                     'visibleSearch' => true,
-                     'blockedVarsForExport' => 
-                    array (
-                    ),
-                     'classes' => 
-                    array (
-                      0 => 
-                      array (
-                        'classes' => 'channels',
-                      ),
-                    ),
-                     'displayMode' => NULL,
-                     'pathFormatterClass' => '',
-                     'maxItems' => NULL,
-                     'assetInlineDownloadAllowed' => false,
-                     'assetUploadPath' => '',
-                     'allowToClearRelation' => true,
-                     'objectsAllowed' => true,
-                     'assetsAllowed' => false,
-                     'assetTypes' => 
-                    array (
-                      0 => 
-                      array (
-                        'assetTypes' => '',
-                      ),
-                    ),
-                     'documentsAllowed' => false,
-                     'documentTypes' => 
-                    array (
-                      0 => 
-                      array (
-                        'documentTypes' => '',
-                      ),
                     ),
                      'enableTextSelection' => false,
                      'width' => '',
@@ -688,6 +752,37 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                      'fieldLabel' => '',
                      'labelWidth' => 380,
                      'labelAlign' => 'left',
+                  )),
+                  8 => 
+                  \Pimcore\Model\DataObject\ClassDefinition\Data\Fieldcollections::__set_state(array(
+                     'name' => 'channelDetails',
+                     'title' => 'Channels',
+                     'tooltip' => '',
+                     'mandatory' => false,
+                     'noteditable' => false,
+                     'index' => 0,
+                     'locked' => false,
+                     'style' => '',
+                     'permissions' => NULL,
+                     'fieldtype' => '',
+                     'relationType' => false,
+                     'invisible' => false,
+                     'visibleGridView' => false,
+                     'visibleSearch' => false,
+                     'blockedVarsForExport' => 
+                    array (
+                    ),
+                     'allowedTypes' => 
+                    array (
+                      0 => 'channels',
+                    ),
+                     'lazyLoading' => true,
+                     'maxItems' => NULL,
+                     'disallowAddRemove' => false,
+                     'disallowReorder' => false,
+                     'collapsed' => false,
+                     'collapsible' => false,
+                     'border' => false,
                   )),
                 ),
                  'locked' => false,
@@ -871,6 +966,91 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                       \Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
                          'name' => 'PackageWeight',
                          'title' => 'Package Weight (pounds)',
+                         'tooltip' => '',
+                         'mandatory' => false,
+                         'noteditable' => false,
+                         'index' => 0,
+                         'locked' => false,
+                         'style' => '',
+                         'permissions' => NULL,
+                         'fieldtype' => '',
+                         'relationType' => false,
+                         'invisible' => false,
+                         'visibleGridView' => false,
+                         'visibleSearch' => false,
+                         'blockedVarsForExport' => 
+                        array (
+                        ),
+                         'defaultValue' => NULL,
+                         'columnLength' => 190,
+                         'regex' => '',
+                         'regexFlags' => 
+                        array (
+                        ),
+                         'unique' => false,
+                         'showCharCount' => false,
+                         'width' => 290,
+                         'defaultValueGenerator' => '',
+                      )),
+                    ),
+                     'locked' => false,
+                     'blockedVarsForExport' => 
+                    array (
+                    ),
+                     'fieldtype' => 'fieldcontainer',
+                     'layout' => 'hbox',
+                     'fieldLabel' => '',
+                     'labelWidth' => 180,
+                     'labelAlign' => 'left',
+                  )),
+                  2 => 
+                  \Pimcore\Model\DataObject\ClassDefinition\Layout\Fieldcontainer::__set_state(array(
+                     'name' => 'Field Container',
+                     'type' => NULL,
+                     'region' => NULL,
+                     'title' => NULL,
+                     'width' => '',
+                     'height' => '',
+                     'collapsible' => false,
+                     'collapsed' => false,
+                     'bodyStyle' => '',
+                     'datatype' => 'layout',
+                     'children' => 
+                    array (
+                      0 => 
+                      \Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
+                         'name' => 'productWeightPounds',
+                         'title' => 'Product Weight (Pounds)',
+                         'tooltip' => '',
+                         'mandatory' => false,
+                         'noteditable' => false,
+                         'index' => 0,
+                         'locked' => false,
+                         'style' => '',
+                         'permissions' => NULL,
+                         'fieldtype' => '',
+                         'relationType' => false,
+                         'invisible' => false,
+                         'visibleGridView' => false,
+                         'visibleSearch' => false,
+                         'blockedVarsForExport' => 
+                        array (
+                        ),
+                         'defaultValue' => NULL,
+                         'columnLength' => 190,
+                         'regex' => '',
+                         'regexFlags' => 
+                        array (
+                        ),
+                         'unique' => false,
+                         'showCharCount' => false,
+                         'width' => 290,
+                         'defaultValueGenerator' => '',
+                      )),
+                      1 => 
+                      \Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
+                         'name' => 'productWeightKg',
+                         'title' => 'Product Weight (Kg)',
                          'tooltip' => '',
                          'mandatory' => false,
                          'noteditable' => false,
@@ -2609,13 +2789,13 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                         array (
                           0 => 
                           array (
-                            'key' => 'Y',
-                            'value' => 'Y',
+                            'key' => 'Yes',
+                            'value' => 'Yes',
                           ),
                           1 => 
                           array (
-                            'key' => 'N',
-                            'value' => 'N',
+                            'key' => 'No',
+                            'value' => 'No',
                           ),
                         ),
                          'defaultValue' => '',
@@ -2765,6 +2945,61 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                       \Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
                          'name' => 'certifications',
                          'title' => 'Certifications',
+                         'tooltip' => '',
+                         'mandatory' => false,
+                         'noteditable' => false,
+                         'index' => 0,
+                         'locked' => false,
+                         'style' => '',
+                         'permissions' => NULL,
+                         'fieldtype' => '',
+                         'relationType' => false,
+                         'invisible' => false,
+                         'visibleGridView' => false,
+                         'visibleSearch' => false,
+                         'blockedVarsForExport' => 
+                        array (
+                        ),
+                         'defaultValue' => NULL,
+                         'columnLength' => 190,
+                         'regex' => '',
+                         'regexFlags' => 
+                        array (
+                        ),
+                         'unique' => false,
+                         'showCharCount' => false,
+                         'width' => 300,
+                         'defaultValueGenerator' => '',
+                      )),
+                    ),
+                     'locked' => false,
+                     'blockedVarsForExport' => 
+                    array (
+                    ),
+                     'fieldtype' => 'fieldcontainer',
+                     'layout' => 'hbox',
+                     'fieldLabel' => '',
+                     'labelWidth' => 280,
+                     'labelAlign' => 'left',
+                  )),
+                  4 => 
+                  \Pimcore\Model\DataObject\ClassDefinition\Layout\Fieldcontainer::__set_state(array(
+                     'name' => 'Field Container',
+                     'type' => NULL,
+                     'region' => NULL,
+                     'title' => NULL,
+                     'width' => '',
+                     'height' => '',
+                     'collapsible' => false,
+                     'collapsed' => false,
+                     'bodyStyle' => '',
+                     'datatype' => 'layout',
+                     'children' => 
+                    array (
+                      0 => 
+                      \Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
+                         'name' => 'warranty',
+                         'title' => 'Warranty',
                          'tooltip' => '',
                          'mandatory' => false,
                          'noteditable' => false,

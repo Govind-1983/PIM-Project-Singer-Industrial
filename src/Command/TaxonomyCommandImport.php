@@ -9,6 +9,7 @@ use Pimcore\Model\DataObject;
 use PhpOffice\PhpSpreadsheet\IOFactory;
 use Psr\Log\LoggerInterface;
 use Exception;
+use Symfony\Component\Console\Input\InputOption;
 
 class TaxonomyCommandImport extends AbstractCommand
 {
@@ -37,16 +38,23 @@ class TaxonomyCommandImport extends AbstractCommand
 
     protected function configure()
     {
-        $this->setName('Import:Taxonomy:import')->setDescription('Using this command you can import the taxonomy data.');
+        $this->setName('Import:Taxonomy:import')->setDescription('Using this command you can import the taxonomy data.')
+            ->addArgument('product_asset_id', InputOption::VALUE_OPTIONAL, 'Product Asset Excel ID');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         try {
             $this->taxonomyLogger->info("PROCESS_START :: To import taxonomy data");
+            $inputAssetId = $input->getArgument('product_asset_id');
 
             $filePath = self::ASSET_FOLDER_NAME . self::FILE_NAME . '.xlsx';
             $asset = \Pimcore\Model\Asset::getByPath($filePath);
+
+            if (!empty($inputAssetId)) {
+                $filePath = \Pimcore\Model\Asset::getById($inputAssetId[0])->getFullPath();
+                $asset = \Pimcore\Model\Asset::getByPath($filePath);
+            }
 
             $sourceFile = PIMCORE_WEB_ROOT . '/var/assets' . $filePath;
 
@@ -81,9 +89,13 @@ class TaxonomyCommandImport extends AbstractCommand
             unset($taxonomySheetData[0]);
             foreach ($taxonomySheetData as $taxonomydata) {
                 $index = 0;
+                $parentFolder = \Pimcore\Model\DataObject\Service::createFolderByPath(self::DATA_OBJECT_FOLDER_NAME);
+                $parentId = $parentFolder->getId();
                 foreach ($taxonomydata as $key => $data) {
+
                     $taxonomyDataIndex = self::TAXONOMY_MAPPING['Taxonomy'] .  $index;
                     if (array_search($taxonomyDataIndex, $headers) && $data) {
+                        $data = str_replace('/', '-', $data);
                         //Check existing data
                         $alreadyExist = $this->checkExistingKey($data);
                         if ($alreadyExist) {
@@ -91,12 +103,9 @@ class TaxonomyCommandImport extends AbstractCommand
                         } else {
                             $taxonomyObj = new DataObject\Taxonomy();
                             $taxonomyObj->setKey($data);
-                            if (empty($parentId)) {
-                                $taxonomyObj->setParent(\Pimcore\Model\DataObject\Service::createFolderByPath(self::DATA_OBJECT_FOLDER_NAME));
-                            } else {
-                                $taxonomyObj->setParentId($parentId);
-                            }
+                            $taxonomyObj->setParentId($parentId);
                             $taxonomyObj->setName($data);
+                            $taxonomyObj->setTaxonomyId(strtoupper(substr(md5(microtime()), 0, 4)));
                             $taxonomyObj->setPublished(true);
                             $taxonomyObj->save();
                             $parentId = $taxonomyObj->getId();

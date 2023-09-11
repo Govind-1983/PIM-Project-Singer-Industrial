@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
-  <link href="https://raw.githack.com/ttskch/select2-bootstrap4-theme/master/dist/select2-bootstrap4.css" rel="stylesheet"> <!-- for live demo page -->
-  <link href="select2-bootstrap4.css" rel="stylesheet"> <!-- for local development env --> 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
   <title>Mapping Detail</title>
 
   <style>
@@ -43,38 +43,130 @@
     .checkbox-list-item label {
       cursor: pointer;
     }
+    .scroll_content{
+      height: 400px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    }
+    .scroll_content_form{
+    height: 400px;
+        overflow-y: scroll;
+        overflow-x: hidden;
+    }
+    .sbt-form {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+    .button_group {
+        margin-bottom: 20px;
+        text-align: right;
+    }
   </style>
 </head>
 <body>
   <div class="wrapper">
     <div class="row">
-      <div class="container">
-        <h3>Woocommerce mapping</h3>
-        <form action="/mapping">
-          <div class="form-group">
-            <ul class="checkbox-list">
-              {% for data in attributeList %} 
-              <li class="checkbox-list-item">
-                <label>
-                  <input type="checkbox" name="mappingAttribute[]" value="{{data}}">
-                  {{data}}
-                </label>
-              </li>
-              {% endfor %}
-            </ul>
-          </div>
-          <div class="button_group">
-            <button type="submit" class="sbt-form">Submit</button>
-          </div>
-        </form>
-      </div>
+        <div class="container">
+            <h3>Woocommerce mapping</h3>
+            <form action="/mapping">
+                <div class="form-group">
+                    <div class="button_group">
+                        <button type="submit" class="sbt-form">Submit</button>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <ul class="checkbox-list scroll_content">
+                                {% for data in attributeList['field'] %}
+                                <li class="checkbox-list-item">
+                                    <label>
+                                        <input type="checkbox" name="mappingAttribute[]" value="{{data[1]}}"
+                                            {% if data[1] in mapping.classAttribute %} checked {% endif %}>
+                                        {{data[1]}}
+                                    </label>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="scroll_content_form">
+                                {% set taxonomyAttributeJson = mapping.taxonomyAttribute | json_encode %}
+                                <select required class="form-control w-32 select2"
+                                    data-value="{{ taxonomyAttributeJson|e }}" data-taxonomy="{{ mapping.taxonomyId }}"
+                                    data-show-subtext="true"
+                                    onchange="attributeNameSelected(this.value, '{{ taxonomyAttributeJson|e }}','{{mapping.taxonomyId}}')"
+                                    name="taxonomy" id="attributeId">
+                                    <option value="">{{ 'select attribute'|trans }}</option>
+                                    {% for attribute in attributeList['attribute'] %}
+                                    <option value="{{ attribute[0] }}" {% if attribute[0] == mapping.taxonomyId %}
+                                        selected{% endif %}>{{ attribute[1] }}</option>
+                                    {% endfor %}
+                                </select>
+                                <div id="select-attributes">
+                                    <!-- The checkboxes will be populated here -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <input type="hidden" name="objectId" value="{{objectId}}">
+            </form>
+        </div>
     </div>
-  </div>
+</div>
 
-</body>
-</html>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+<script>
+    $(document).ready(function(){
+        let selectedValue = $("#attributeId").val();
+        let selectedField = $("#attributeId").data('value');
+        let selectedTaxonomy = $("#attributeId").data('taxonomy');
+        attributeNameSelected(selectedValue,selectedField,selectedTaxonomy);
+    })
+
+    function attributeNameSelected(attributeName, selectedField,taxonomyId) {
+        console.log(attributeName, selectedField,taxonomyId);
+    if (attributeName) {
+        $.ajax({
+            type: 'POST',
+            url: '/attribute/list',
+            data: { 'attributeName': attributeName },
+            success: function (data) {
+                let checkboxes = '';
+                if (data.length > 0) {
+                    for (let i = 0; i < data.length; i++) {
+                        let isChecked = '';
+
+                        if (selectedField.includes(data[i]) && attributeName ==taxonomyId) {
+                            isChecked = 'checked';
+                        }
+
+                        checkboxes += `
+                            <div>
+                                <input type="checkbox" name="selectedAttributes[]" value="${data[i]}" ${isChecked}>
+                                <label>${data[i]}</label>
+                            </div>
+                        `;
+                    }
+                    document.getElementById('select-attributes').innerHTML = checkboxes;
+                } else {
+                    document.getElementById('select-attributes').innerHTML = '<p>No attributes found.</p>';
+                }
+            }
+        });
+    } else {
+        document.getElementById('select-attributes').innerHTML = '<p>Please select an attribute.</p>';
+    }
+}
+
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+</body>
+</html>

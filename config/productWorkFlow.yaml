@@ -289,3 +289,105 @@ pimcore:
                                 channelType:
                                   - pimcore_notification
                       guard: "is_fully_authenticated() and is_granted('ROLE_CHANNEL_CATALOG_MANAGER')"
+
+        Asset_Workflows:
+          label: 'Taxonomy'
+          type: 'state_machine'
+          support_strategy:
+            service: App\Workflow\SupportStrategy
+
+          marking_store:
+            type: state_table
+
+          places:
+            NewTaxonomy:
+              label: 'New Taxonomy'
+              color: '#377ea9'
+              permissions:
+                - condition: "is_fully_authenticated() and 'ROLE_PIMCORE_ADMIN' in role_names"
+                  modify: true
+                - condition: "is_fully_authenticated() and 'ROLE_VENDOR_PORTAL_USER' in role_names"
+                  publish: false
+                  delete: false
+                  save: true
+                - modify: false
+            SentForTaxonomyReview:
+              label: 'Sent For Taxonomy Review'
+              color: '#377ea9'
+              permissions:
+                - condition: "is_fully_authenticated() and 'ROLE_PIMCORE_ADMIN' in role_names"
+                  modify: true
+                - condition: "is_fully_authenticated() and 'ROLE_VENDOR_PORTAL_USER' in role_names"
+                  publish: false
+                  delete: false
+                  save: true
+                - modify: false
+
+            NeedChangesForTaxonomyReview:
+              label: 'Need Changes To Complete Review'
+              color: '#377ea9'
+              permissions:
+                - condition: "is_fully_authenticated() and 'ROLE_PIMCORE_ADMIN' in role_names"
+                  modify: true
+                - condition: "is_fully_authenticated() and 'ROLE_CHANNEL_CATALOG_MANAGER' in role_names"
+                  publish: false
+                  delete: false
+                  save: true
+                - modify: false
+
+            TaxonomyReviewCompleted:
+              label: 'Taxonomy Review Completed'
+              color: '#377ea9'
+              permissions:
+                - condition: "is_fully_authenticated() and 'ROLE_PIMCORE_ADMIN' in role_names"
+                  modify: true
+                - condition: "is_fully_authenticated() and 'ROLE_CHANNEL_CATALOG_MANAGER' in role_names"
+                  publish: false
+                  delete: false
+                  save: true
+                - modify: false
+          transitions:
+            #Basic approve transition
+            SentForTaxonomyReview:
+              from: [NewTaxonomy,NeedChangesForTaxonomyReview]
+              to: SentForTaxonomyReview
+              options:
+                label: 'Send For Taxonomy Review'
+                notes:
+                  commentEnabled: true
+                  commentRequired: true
+                notificationSettings:
+                  - notifyRoles: ['DATA_QUALITY_SPECIALIST']
+                    channelType:
+                      - pimcore_notification
+              guard: "is_fully_authenticated() and is_granted('ROLE_VENDOR_PORTAL_USER')"
+            NeedChangesForTaxonomyReview:
+              from: SentForTaxonomyReview
+              to: NeedChangesForTaxonomyReview
+              options:
+                label: 'Need Changes For Taxonomy Review'
+                notes:
+                  commentEnabled: true
+                  commentRequired: true
+                notificationSettings:
+                  - notifyRoles: ['VENDOR_PORTAL_USER']
+                    channelType:
+                      - pimcore_notification
+
+              guard: "is_fully_authenticated() and is_granted('ROLE_CHANNEL_CATALOG_MANAGER')"
+
+              # or is_granted('ROLE_VENDOR_PORTAL_USER')
+            TaxonomyReviewCompleted:
+              from: SentForTaxonomyReview
+              to: TaxonomyReviewCompleted
+              options:
+                label: 'Taxonomy Review Completed'
+                notes:
+                  commentEnabled: true
+                  commentRequired: true
+                notificationSettings:
+                  - notifyRoles: ['VENDOR_PORTAL_USER']
+                    channelType:
+                      - pimcore_notification
+
+              guard: "is_fully_authenticated() and is_granted('ROLE_CHANNEL_CATALOG_MANAGER')"

@@ -49,6 +49,9 @@ services:
         public: true
         tags: [ 'controller.service_arguments' ]
 
+    App\Workflow\:
+        resource: '../src/Workflow/*'
+
 
     #
     # COMMANDS
@@ -79,6 +82,10 @@ services:
         tags:
             - { name: kernel.event_listener, event: pimcore.asset.postAdd, method: onAssetPostAdd }
 
-    App\EventListener\ProductPublishedListener:
+    App\EventListener\ProductAssetUpdateListener:
         tags:
-            - { name: kernel.event_listener, event: pimcore.dataobject.postUpdate, method: onProductPostUpdate }
+            - { name: kernel.event_listener, event: pimcore.asset.postUpdate, method: onAssetPostUpdate }
+
+    App\EventListener\ProductPreUpdateListener:
+        tags:
+            - { name: kernel.event_listener, event: pimcore.dataobject.preUpdate, method: onProductPreUpdate }
