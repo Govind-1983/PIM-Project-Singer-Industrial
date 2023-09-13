@@ -14,7 +14,7 @@
   "require": {
     "openspout/openspout": "^4.14",
     "pimcore/admin-ui-classic-bundle": "^1.0",
-    "pimcore/pimcore": "^11.0",
+    "pimcore/pimcore": "11.0.8",
     "symfony/dotenv": "^6.2",
     "symfony/runtime": "^6.2"
   },
