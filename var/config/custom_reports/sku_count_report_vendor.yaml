@@ -1,0 +1,57 @@
+pimcore_custom_reports:
+    definitions:
+        sku_count_report_vendor:
+            name: sku_count_report_vendor
+            sql: ''
+            dataSourceConfig:
+                -
+                    sql: 'DISTINCT SUM(count(*)) OVER( ORDER BY DATE( from_unixtime(creationDate) ) ) AS total, DATE( from_unixtime(creationDate) ) AS DateCreated,brand'
+                    from: object_product
+                    where: ''
+                    groupby: 'oo_id,brand'
+                    type: sql
+            columnConfiguration:
+                -
+                    name: total
+                    display: true
+                    export: true
+                    order: true
+                    width: ''
+                    label: ''
+                    id: extModel685-3
+                -
+                    name: DateCreated
+                    display: true
+                    export: true
+                    order: true
+                    width: ''
+                    label: ''
+                    filter: null
+                    filter_drilldown: filter_and_show
+                    id: extModel685-4
+                -
+                    name: brand
+                    display: true
+                    export: true
+                    order: true
+                    width: ''
+                    label: ''
+                    id: extModel685-5
+                    filter_drilldown: filter_and_show
+            niceName: ''
+            group: ''
+            groupIconClass: ''
+            iconClass: ''
+            menuShortcut: true
+            reportClass: ''
+            chartType: line
+            pieColumn: null
+            pieLabelColumn: null
+            xAxis: DateCreated
+            yAxis:
+                - total
+            modificationDate: 1694599069
+            creationDate: 1694523419
+            shareGlobally: true
+            sharedUserNames: {  }
+            sharedRoleNames: {  }

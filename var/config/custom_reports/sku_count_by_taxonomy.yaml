@@ -1,0 +1,56 @@
+pimcore_custom_reports:
+    definitions:
+        sku_count_by_taxonomy:
+            name: sku_count_by_taxonomy
+            sql: ''
+            dataSourceConfig:
+                -
+                    sql: 'DISTINCT SUM(count(*)) OVER( ORDER BY DATE( from_unixtime(op.creationDate) ) ) AS total, DATE( from_unixtime(op.creationDate) ) AS DateCreated, ot.name '
+                    from: "object_product op left join object_taxonomy ot on op.taxonomy like concat ('%' , ot.oo_id, '%') "
+                    where: ''
+                    groupby: 'op.oo_id, ot.name'
+                    type: sql
+            columnConfiguration:
+                -
+                    name: total
+                    display: true
+                    export: true
+                    order: true
+                    width: ''
+                    label: ''
+                    id: extModel1049-3
+                -
+                    name: DateCreated
+                    display: true
+                    export: true
+                    order: true
+                    width: ''
+                    label: ''
+                    filter_drilldown: filter_and_show
+                    id: extModel1049-4
+                -
+                    name: name
+                    display: true
+                    export: true
+                    order: true
+                    width: ''
+                    label: ''
+                    filter_drilldown: filter_and_show
+                    id: extModel1049-5
+            niceName: ''
+            group: ''
+            groupIconClass: ''
+            iconClass: ''
+            menuShortcut: true
+            reportClass: ''
+            chartType: line
+            pieColumn: null
+            pieLabelColumn: null
+            xAxis: name
+            yAxis:
+                - total
+            modificationDate: 1694599558
+            creationDate: 1694598915
+            shareGlobally: true
+            sharedUserNames: {  }
+            sharedRoleNames: {  }
