@@ -125,9 +125,6 @@ class ProductImportCommand extends AbstractCommand
         try {
             if ($websetting->getData() == 1) {
                 return 1;
-            } else {
-                $websetting->setData(1);
-                $websetting->save();
             }
 
             $fileData = $this->getVendorImportFile();
@@ -149,6 +146,8 @@ class ProductImportCommand extends AbstractCommand
             }
             $productImportFile = PIMCORE_WEB_ROOT . '/var/assets' . $productFileObj->getFullPath();
 
+            $websetting->setData(1);
+            $websetting->save();
             $this->importProducts($productImportFile);
 
             $processedFolder = \Pimcore\Model\Asset\Service::createFolderByPath(($this->vendorName . self::PROCESSED_FOLDER));
