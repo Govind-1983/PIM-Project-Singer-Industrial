@@ -61,14 +61,14 @@
  * - warranty [input]
  */
 
-return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
+return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
    'dao' => NULL,
    'id' => 'product',
    'name' => 'Product',
    'title' => '',
    'description' => '',
    'creationDate' => NULL,
-   'modificationDate' => 1693310510,
+   'modificationDate' => 1695714009,
    'userOwner' => 2,
    'userModification' => 2,
    'parentClass' => '',
@@ -84,7 +84,7 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
    'allowVariants' => false,
    'showVariants' => false,
    'layoutDefinitions' => 
-  \Pimcore\Model\DataObject\ClassDefinition\Layout\Panel::__set_state(array(
+  Pimcore\Model\DataObject\ClassDefinition\Layout\Panel::__set_state(array(
      'name' => 'pimcore_root',
      'type' => NULL,
      'region' => NULL,
@@ -98,7 +98,7 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
      'children' => 
     array (
       0 => 
-      \Pimcore\Model\DataObject\ClassDefinition\Layout\Tabpanel::__set_state(array(
+      Pimcore\Model\DataObject\ClassDefinition\Layout\Tabpanel::__set_state(array(
          'name' => 'Layout',
          'type' => NULL,
          'region' => NULL,
@@ -112,7 +112,7 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
          'children' => 
         array (
           0 => 
-          \Pimcore\Model\DataObject\ClassDefinition\Layout\Panel::__set_state(array(
+          Pimcore\Model\DataObject\ClassDefinition\Layout\Panel::__set_state(array(
              'name' => 'Basic info',
              'type' => NULL,
              'region' => NULL,
@@ -126,7 +126,7 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'children' => 
             array (
               0 => 
-              \Pimcore\Model\DataObject\ClassDefinition\Layout\Fieldset::__set_state(array(
+              Pimcore\Model\DataObject\ClassDefinition\Layout\Fieldset::__set_state(array(
                  'name' => 'Layout',
                  'type' => NULL,
                  'region' => NULL,
@@ -140,7 +140,7 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                  'children' => 
                 array (
                   0 => 
-                  \Pimcore\Model\DataObject\ClassDefinition\Layout\Fieldcontainer::__set_state(array(
+                  Pimcore\Model\DataObject\ClassDefinition\Layout\Fieldcontainer::__set_state(array(
                      'name' => 'Field Container',
                      'type' => NULL,
                      'region' => NULL,
@@ -154,13 +154,13 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                      'children' => 
                     array (
                       0 => 
-                      \Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
+                      Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
                          'name' => 'ssin',
                          'title' => 'SSIN (Unique ID)',
                          'tooltip' => '',
                          'mandatory' => false,
                          'noteditable' => true,
-                         'index' => 0,
+                         'index' => false,
                          'locked' => false,
                          'style' => '',
                          'permissions' => NULL,
@@ -184,13 +184,13 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                          'defaultValueGenerator' => '',
                       )),
                       1 => 
-                      \Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
+                      Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
                          'name' => 'manufacturerName',
                          'title' => 'Manufacturer name',
                          'tooltip' => '',
                          'mandatory' => false,
                          'noteditable' => false,
-                         'index' => 0,
+                         'index' => false,
                          'locked' => false,
                          'style' => '',
                          'permissions' => NULL,
@@ -225,7 +225,7 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                      'labelAlign' => 'left',
                   )),
                   1 => 
-                  \Pimcore\Model\DataObject\ClassDefinition\Layout\Fieldcontainer::__set_state(array(
+                  Pimcore\Model\DataObject\ClassDefinition\Layout\Fieldcontainer::__set_state(array(
                      'name' => 'Field Container',
                      'type' => NULL,
                      'region' => NULL,
@@ -239,13 +239,13 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                      'children' => 
                     array (
                       0 => 
-                      \Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
+                      Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
                          'name' => 'brand',
                          'title' => 'Brand',
                          'tooltip' => '',
                          'mandatory' => false,
                          'noteditable' => false,
-                         'index' => 0,
+                         'index' => false,
                          'locked' => false,
                          'style' => '',
                          'permissions' => NULL,
@@ -269,13 +269,13 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                          'defaultValueGenerator' => '',
                       )),
                       1 => 
-                      \Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
+                      Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
                          'name' => 'manufacturerPartNumber',
                          'title' => 'Manufacturer part number ',
                          'tooltip' => '',
                          'mandatory' => false,
                          'noteditable' => false,
-                         'index' => 0,
+                         'index' => false,
                          'locked' => false,
                          'style' => '',
                          'permissions' => NULL,
@@ -310,7 +310,7 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                      'labelAlign' => 'left',
                   )),
                   2 => 
-                  \Pimcore\Model\DataObject\ClassDefinition\Layout\Fieldcontainer::__set_state(array(
+                  Pimcore\Model\DataObject\ClassDefinition\Layout\Fieldcontainer::__set_state(array(
                      'name' => 'Field Container',
                      'type' => NULL,
                      'region' => NULL,
@@ -324,13 +324,13 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                      'children' => 
                     array (
                       0 => 
-                      \Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
+                      Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
                          'name' => 'productType',
                          'title' => 'Product Type',
                          'tooltip' => '',
                          'mandatory' => false,
                          'noteditable' => false,
-                         'index' => 0,
+                         'index' => false,
                          'locked' => false,
                          'style' => '',
                          'permissions' => NULL,
@@ -354,13 +354,13 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                          'defaultValueGenerator' => '',
                       )),
                       1 => 
-                      \Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
+                      Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
                          'name' => 'series',
                          'title' => 'Series',
                          'tooltip' => '',
                          'mandatory' => false,
                          'noteditable' => false,
-                         'index' => 0,
+                         'index' => false,
                          'locked' => false,
                          'style' => '',
                          'permissions' => NULL,
@@ -395,7 +395,7 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                      'labelAlign' => 'left',
                   )),
                   3 => 
-                  \Pimcore\Model\DataObject\ClassDefinition\Layout\Fieldcontainer::__set_state(array(
+                  Pimcore\Model\DataObject\ClassDefinition\Layout\Fieldcontainer::__set_state(array(
                      'name' => 'Field Container',
                      'type' => NULL,
                      'region' => NULL,
@@ -409,13 +409,13 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                      'children' => 
                     array (
                       0 => 
-                      \Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
+                      Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
                          'name' => 'upc',
                          'title' => 'UPC/EAN',
                          'tooltip' => '',
                          'mandatory' => false,
                          'noteditable' => false,
-                         'index' => 0,
+                         'index' => false,
                          'locked' => false,
                          'style' => '',
                          'permissions' => NULL,
@@ -439,13 +439,13 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                          'defaultValueGenerator' => '',
                       )),
                       1 => 
-                      \Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
+                      Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
                          'name' => 'unspsc',
                          'title' => 'UNSPSC',
                          'tooltip' => '',
                          'mandatory' => false,
                          'noteditable' => false,
-                         'index' => 0,
+                         'index' => false,
                          'locked' => false,
                          'style' => '',
                          'permissions' => NULL,
@@ -480,7 +480,7 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                      'labelAlign' => 'left',
                   )),
                   4 => 
-                  \Pimcore\Model\DataObject\ClassDefinition\Layout\Fieldcontainer::__set_state(array(
+                  Pimcore\Model\DataObject\ClassDefinition\Layout\Fieldcontainer::__set_state(array(
                      'name' => 'Field Container',
                      'type' => NULL,
                      'region' => NULL,
@@ -494,13 +494,13 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                      'children' => 
                     array (
                       0 => 
-                      \Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
+                      Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
                          'name' => 'usTariffCode',
                          'title' => 'US Tariff Code',
                          'tooltip' => '',
                          'mandatory' => false,
                          'noteditable' => false,
-                         'index' => 0,
+                         'index' => false,
                          'locked' => false,
                          'style' => '',
                          'permissions' => NULL,
@@ -524,13 +524,13 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                          'defaultValueGenerator' => '',
                       )),
                       1 => 
-                      \Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
+                      Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
                          'name' => 'vendorCageCode',
                          'title' => 'Vendor Cage Code',
                          'tooltip' => '',
                          'mandatory' => false,
                          'noteditable' => false,
-                         'index' => 0,
+                         'index' => false,
                          'locked' => false,
                          'style' => '',
                          'permissions' => NULL,
@@ -565,7 +565,7 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                      'labelAlign' => 'left',
                   )),
                   5 => 
-                  \Pimcore\Model\DataObject\ClassDefinition\Layout\Fieldcontainer::__set_state(array(
+                  Pimcore\Model\DataObject\ClassDefinition\Layout\Fieldcontainer::__set_state(array(
                      'name' => 'Field Container',
                      'type' => NULL,
                      'region' => NULL,
@@ -579,13 +579,13 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                      'children' => 
                     array (
                       0 => 
-                      \Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
+                      Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
                          'name' => 'nmfc',
                          'title' => 'NMFC',
                          'tooltip' => '',
                          'mandatory' => false,
                          'noteditable' => false,
-                         'index' => 0,
+                         'index' => false,
                          'locked' => false,
                          'style' => '',
                          'permissions' => NULL,
@@ -609,13 +609,13 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                          'defaultValueGenerator' => '',
                       )),
                       1 => 
-                      \Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
+                      Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
                          'name' => 'applications',
                          'title' => 'Applications',
                          'tooltip' => '',
                          'mandatory' => false,
                          'noteditable' => false,
-                         'index' => 0,
+                         'index' => false,
                          'locked' => false,
                          'style' => '',
                          'permissions' => NULL,
@@ -650,13 +650,13 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                      'labelAlign' => 'left',
                   )),
                   6 => 
-                  \Pimcore\Model\DataObject\ClassDefinition\Data\ManyToManyRelation::__set_state(array(
+                  Pimcore\Model\DataObject\ClassDefinition\Data\ManyToManyRelation::__set_state(array(
                      'name' => 'taxonomy',
                      'title' => 'Taxonomy',
                      'tooltip' => '',
                      'mandatory' => false,
                      'noteditable' => false,
-                     'index' => 0,
+                     'index' => false,
                      'locked' => false,
                      'style' => '',
                      'permissions' => NULL,
@@ -699,7 +699,7 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                      'height' => '',
                   )),
                   7 => 
-                  \Pimcore\Model\DataObject\ClassDefinition\Layout\Fieldcontainer::__set_state(array(
+                  Pimcore\Model\DataObject\ClassDefinition\Layout\Fieldcontainer::__set_state(array(
                      'name' => 'Field Container',
                      'type' => NULL,
                      'region' => NULL,
@@ -713,19 +713,19 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                      'children' => 
                     array (
                       0 => 
-                      \Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
+                      Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
                          'name' => 'workflowState',
                          'title' => 'workflowState',
                          'tooltip' => '',
                          'mandatory' => false,
-                         'noteditable' => false,
-                         'index' => 0,
+                         'noteditable' => true,
+                         'index' => false,
                          'locked' => false,
                          'style' => '',
                          'permissions' => NULL,
                          'fieldtype' => '',
                          'relationType' => false,
-                         'invisible' => false,
+                         'invisible' => true,
                          'visibleGridView' => false,
                          'visibleSearch' => false,
                          'blockedVarsForExport' => 
@@ -754,13 +754,13 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                      'labelAlign' => 'left',
                   )),
                   8 => 
-                  \Pimcore\Model\DataObject\ClassDefinition\Data\Fieldcollections::__set_state(array(
+                  Pimcore\Model\DataObject\ClassDefinition\Data\Fieldcollections::__set_state(array(
                      'name' => 'channelDetails',
                      'title' => 'Channels',
                      'tooltip' => '',
                      'mandatory' => false,
                      'noteditable' => false,
-                     'index' => 0,
+                     'index' => false,
                      'locked' => false,
                      'style' => '',
                      'permissions' => NULL,
@@ -806,7 +806,7 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'labelAlign' => 'left',
           )),
           1 => 
-          \Pimcore\Model\DataObject\ClassDefinition\Layout\Panel::__set_state(array(
+          Pimcore\Model\DataObject\ClassDefinition\Layout\Panel::__set_state(array(
              'name' => 'Packaging Dimensions',
              'type' => NULL,
              'region' => NULL,
@@ -820,7 +820,7 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'children' => 
             array (
               0 => 
-              \Pimcore\Model\DataObject\ClassDefinition\Layout\Fieldset::__set_state(array(
+              Pimcore\Model\DataObject\ClassDefinition\Layout\Fieldset::__set_state(array(
                  'name' => 'Layout',
                  'type' => NULL,
                  'region' => NULL,
@@ -834,7 +834,7 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                  'children' => 
                 array (
                   0 => 
-                  \Pimcore\Model\DataObject\ClassDefinition\Layout\Fieldcontainer::__set_state(array(
+                  Pimcore\Model\DataObject\ClassDefinition\Layout\Fieldcontainer::__set_state(array(
                      'name' => 'Field Container',
                      'type' => NULL,
                      'region' => NULL,
@@ -848,13 +848,13 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                      'children' => 
                     array (
                       0 => 
-                      \Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
+                      Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
                          'name' => 'package_Height',
                          'title' => 'Package Height (Inches)',
                          'tooltip' => '',
                          'mandatory' => false,
                          'noteditable' => false,
-                         'index' => 0,
+                         'index' => false,
                          'locked' => false,
                          'style' => '',
                          'permissions' => NULL,
@@ -878,13 +878,13 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                          'defaultValueGenerator' => '',
                       )),
                       1 => 
-                      \Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
+                      Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
                          'name' => 'packageLength',
                          'title' => 'Package Length (Inches)',
                          'tooltip' => '',
                          'mandatory' => false,
                          'noteditable' => false,
-                         'index' => 0,
+                         'index' => false,
                          'locked' => false,
                          'style' => '',
                          'permissions' => NULL,
@@ -919,7 +919,7 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                      'labelAlign' => 'left',
                   )),
                   1 => 
-                  \Pimcore\Model\DataObject\ClassDefinition\Layout\Fieldcontainer::__set_state(array(
+                  Pimcore\Model\DataObject\ClassDefinition\Layout\Fieldcontainer::__set_state(array(
                      'name' => 'Field Container',
                      'type' => NULL,
                      'region' => NULL,
@@ -933,13 +933,13 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                      'children' => 
                     array (
                       0 => 
-                      \Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
+                      Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
                          'name' => 'packageWidth',
                          'title' => 'Package Width (Inches)',
                          'tooltip' => '',
                          'mandatory' => false,
                          'noteditable' => false,
-                         'index' => 0,
+                         'index' => false,
                          'locked' => false,
                          'style' => '',
                          'permissions' => NULL,
@@ -963,13 +963,13 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                          'defaultValueGenerator' => '',
                       )),
                       1 => 
-                      \Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
+                      Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
                          'name' => 'PackageWeight',
                          'title' => 'Package Weight (pounds)',
                          'tooltip' => '',
                          'mandatory' => false,
                          'noteditable' => false,
-                         'index' => 0,
+                         'index' => false,
                          'locked' => false,
                          'style' => '',
                          'permissions' => NULL,
@@ -1004,7 +1004,7 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                      'labelAlign' => 'left',
                   )),
                   2 => 
-                  \Pimcore\Model\DataObject\ClassDefinition\Layout\Fieldcontainer::__set_state(array(
+                  Pimcore\Model\DataObject\ClassDefinition\Layout\Fieldcontainer::__set_state(array(
                      'name' => 'Field Container',
                      'type' => NULL,
                      'region' => NULL,
@@ -1018,13 +1018,13 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                      'children' => 
                     array (
                       0 => 
-                      \Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
+                      Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
                          'name' => 'productWeightPounds',
                          'title' => 'Product Weight (Pounds)',
                          'tooltip' => '',
                          'mandatory' => false,
                          'noteditable' => false,
-                         'index' => 0,
+                         'index' => false,
                          'locked' => false,
                          'style' => '',
                          'permissions' => NULL,
@@ -1048,13 +1048,13 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                          'defaultValueGenerator' => '',
                       )),
                       1 => 
-                      \Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
+                      Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
                          'name' => 'productWeightKg',
                          'title' => 'Product Weight (Kg)',
                          'tooltip' => '',
                          'mandatory' => false,
                          'noteditable' => false,
-                         'index' => 0,
+                         'index' => false,
                          'locked' => false,
                          'style' => '',
                          'permissions' => NULL,
@@ -1110,7 +1110,7 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'labelAlign' => 'left',
           )),
           2 => 
-          \Pimcore\Model\DataObject\ClassDefinition\Layout\Panel::__set_state(array(
+          Pimcore\Model\DataObject\ClassDefinition\Layout\Panel::__set_state(array(
              'name' => 'Price & inventory',
              'type' => NULL,
              'region' => NULL,
@@ -1124,7 +1124,7 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'children' => 
             array (
               0 => 
-              \Pimcore\Model\DataObject\ClassDefinition\Layout\Fieldset::__set_state(array(
+              Pimcore\Model\DataObject\ClassDefinition\Layout\Fieldset::__set_state(array(
                  'name' => 'Layout',
                  'type' => NULL,
                  'region' => NULL,
@@ -1138,7 +1138,7 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                  'children' => 
                 array (
                   0 => 
-                  \Pimcore\Model\DataObject\ClassDefinition\Layout\Fieldcontainer::__set_state(array(
+                  Pimcore\Model\DataObject\ClassDefinition\Layout\Fieldcontainer::__set_state(array(
                      'name' => 'Field Container',
                      'type' => NULL,
                      'region' => NULL,
@@ -1152,13 +1152,13 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                      'children' => 
                     array (
                       0 => 
-                      \Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
+                      Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
                          'name' => 'countryofOrigin',
                          'title' => 'Country of Origin',
                          'tooltip' => '',
                          'mandatory' => false,
                          'noteditable' => false,
-                         'index' => 0,
+                         'index' => false,
                          'locked' => false,
                          'style' => '',
                          'permissions' => NULL,
@@ -1182,13 +1182,13 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                          'defaultValueGenerator' => '',
                       )),
                       1 => 
-                      \Pimcore\Model\DataObject\ClassDefinition\Data\Numeric::__set_state(array(
+                      Pimcore\Model\DataObject\ClassDefinition\Data\Numeric::__set_state(array(
                          'name' => 'regularPrice',
                          'title' => 'Regular Price',
                          'tooltip' => '',
                          'mandatory' => false,
                          'noteditable' => false,
-                         'index' => 0,
+                         'index' => false,
                          'locked' => false,
                          'style' => '',
                          'permissions' => NULL,
@@ -1223,7 +1223,7 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                      'labelAlign' => 'left',
                   )),
                   1 => 
-                  \Pimcore\Model\DataObject\ClassDefinition\Layout\Fieldcontainer::__set_state(array(
+                  Pimcore\Model\DataObject\ClassDefinition\Layout\Fieldcontainer::__set_state(array(
                      'name' => 'Field Container',
                      'type' => NULL,
                      'region' => NULL,
@@ -1237,13 +1237,13 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                      'children' => 
                     array (
                       0 => 
-                      \Pimcore\Model\DataObject\ClassDefinition\Data\Numeric::__set_state(array(
+                      Pimcore\Model\DataObject\ClassDefinition\Data\Numeric::__set_state(array(
                          'name' => 'salePrice',
                          'title' => 'Sale Price',
                          'tooltip' => '',
                          'mandatory' => false,
                          'noteditable' => false,
-                         'index' => 0,
+                         'index' => false,
                          'locked' => false,
                          'style' => '',
                          'permissions' => NULL,
@@ -1267,13 +1267,13 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                          'defaultValueGenerator' => '',
                       )),
                       1 => 
-                      \Pimcore\Model\DataObject\ClassDefinition\Data\Numeric::__set_state(array(
+                      Pimcore\Model\DataObject\ClassDefinition\Data\Numeric::__set_state(array(
                          'name' => 'netPackQuantity',
                          'title' => 'Net Pack Quantity',
                          'tooltip' => '',
                          'mandatory' => false,
                          'noteditable' => false,
-                         'index' => 0,
+                         'index' => false,
                          'locked' => false,
                          'style' => '',
                          'permissions' => NULL,
@@ -1308,7 +1308,7 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                      'labelAlign' => 'left',
                   )),
                   2 => 
-                  \Pimcore\Model\DataObject\ClassDefinition\Layout\Fieldcontainer::__set_state(array(
+                  Pimcore\Model\DataObject\ClassDefinition\Layout\Fieldcontainer::__set_state(array(
                      'name' => 'Field Container',
                      'type' => NULL,
                      'region' => NULL,
@@ -1322,13 +1322,13 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                      'children' => 
                     array (
                       0 => 
-                      \Pimcore\Model\DataObject\ClassDefinition\Data\Numeric::__set_state(array(
+                      Pimcore\Model\DataObject\ClassDefinition\Data\Numeric::__set_state(array(
                          'name' => 'netPackQuantityUnits',
                          'title' => 'Net Pack Quantity Units',
                          'tooltip' => '',
                          'mandatory' => false,
                          'noteditable' => false,
-                         'index' => 0,
+                         'index' => false,
                          'locked' => false,
                          'style' => '',
                          'permissions' => NULL,
@@ -1352,13 +1352,13 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                          'defaultValueGenerator' => '',
                       )),
                       1 => 
-                      \Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
+                      Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
                          'name' => 'partStatus',
                          'title' => 'Part Status',
                          'tooltip' => '',
                          'mandatory' => false,
                          'noteditable' => false,
-                         'index' => 0,
+                         'index' => false,
                          'locked' => false,
                          'style' => '',
                          'permissions' => NULL,
@@ -1393,7 +1393,7 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                      'labelAlign' => 'left',
                   )),
                   3 => 
-                  \Pimcore\Model\DataObject\ClassDefinition\Layout\Fieldcontainer::__set_state(array(
+                  Pimcore\Model\DataObject\ClassDefinition\Layout\Fieldcontainer::__set_state(array(
                      'name' => 'Field Container',
                      'type' => NULL,
                      'region' => NULL,
@@ -1407,13 +1407,13 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                      'children' => 
                     array (
                       0 => 
-                      \Pimcore\Model\DataObject\ClassDefinition\Data\Numeric::__set_state(array(
+                      Pimcore\Model\DataObject\ClassDefinition\Data\Numeric::__set_state(array(
                          'name' => 'leadTime',
                          'title' => 'Lead Time (days)',
                          'tooltip' => '',
                          'mandatory' => false,
                          'noteditable' => false,
-                         'index' => 0,
+                         'index' => false,
                          'locked' => false,
                          'style' => '',
                          'permissions' => NULL,
@@ -1437,13 +1437,13 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                          'defaultValueGenerator' => '',
                       )),
                       1 => 
-                      \Pimcore\Model\DataObject\ClassDefinition\Data\Numeric::__set_state(array(
+                      Pimcore\Model\DataObject\ClassDefinition\Data\Numeric::__set_state(array(
                          'name' => 'minOrderQuantity',
                          'title' => 'Min Order Quantity',
                          'tooltip' => '',
                          'mandatory' => false,
                          'noteditable' => false,
-                         'index' => 0,
+                         'index' => false,
                          'locked' => false,
                          'style' => '',
                          'permissions' => NULL,
@@ -1478,7 +1478,7 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                      'labelAlign' => 'left',
                   )),
                   4 => 
-                  \Pimcore\Model\DataObject\ClassDefinition\Layout\Fieldcontainer::__set_state(array(
+                  Pimcore\Model\DataObject\ClassDefinition\Layout\Fieldcontainer::__set_state(array(
                      'name' => 'Field Container',
                      'type' => NULL,
                      'region' => NULL,
@@ -1492,13 +1492,13 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                      'children' => 
                     array (
                       0 => 
-                      \Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
+                      Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
                          'name' => 'stockstatus',
                          'title' => 'Stock Status',
                          'tooltip' => '',
                          'mandatory' => false,
                          'noteditable' => false,
-                         'index' => 0,
+                         'index' => false,
                          'locked' => false,
                          'style' => '',
                          'permissions' => NULL,
@@ -1554,7 +1554,7 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'labelAlign' => 'left',
           )),
           3 => 
-          \Pimcore\Model\DataObject\ClassDefinition\Layout\Panel::__set_state(array(
+          Pimcore\Model\DataObject\ClassDefinition\Layout\Panel::__set_state(array(
              'name' => 'Media',
              'type' => NULL,
              'region' => NULL,
@@ -1568,7 +1568,7 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'children' => 
             array (
               0 => 
-              \Pimcore\Model\DataObject\ClassDefinition\Layout\Fieldset::__set_state(array(
+              Pimcore\Model\DataObject\ClassDefinition\Layout\Fieldset::__set_state(array(
                  'name' => 'Layout',
                  'type' => NULL,
                  'region' => NULL,
@@ -1582,7 +1582,7 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                  'children' => 
                 array (
                   0 => 
-                  \Pimcore\Model\DataObject\ClassDefinition\Layout\Fieldcontainer::__set_state(array(
+                  Pimcore\Model\DataObject\ClassDefinition\Layout\Fieldcontainer::__set_state(array(
                      'name' => 'Field Container',
                      'type' => NULL,
                      'region' => NULL,
@@ -1596,13 +1596,13 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                      'children' => 
                     array (
                       0 => 
-                      \Pimcore\Model\DataObject\ClassDefinition\Data\Image::__set_state(array(
+                      Pimcore\Model\DataObject\ClassDefinition\Data\Image::__set_state(array(
                          'name' => 'featuredImage',
                          'title' => 'Featured Image',
                          'tooltip' => '',
                          'mandatory' => false,
                          'noteditable' => false,
-                         'index' => 0,
+                         'index' => false,
                          'locked' => false,
                          'style' => '',
                          'permissions' => NULL,
@@ -1630,7 +1630,7 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                      'labelAlign' => 'left',
                   )),
                   1 => 
-                  \Pimcore\Model\DataObject\ClassDefinition\Layout\Fieldcontainer::__set_state(array(
+                  Pimcore\Model\DataObject\ClassDefinition\Layout\Fieldcontainer::__set_state(array(
                      'name' => 'Field Container',
                      'type' => NULL,
                      'region' => NULL,
@@ -1644,13 +1644,13 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                      'children' => 
                     array (
                       0 => 
-                      \Pimcore\Model\DataObject\ClassDefinition\Data\ImageGallery::__set_state(array(
+                      Pimcore\Model\DataObject\ClassDefinition\Data\ImageGallery::__set_state(array(
                          'name' => 'DimensionalImage',
                          'title' => 'Dimensional Image',
                          'tooltip' => '',
                          'mandatory' => false,
                          'noteditable' => false,
-                         'index' => 0,
+                         'index' => false,
                          'locked' => false,
                          'style' => '',
                          'permissions' => NULL,
@@ -1670,13 +1670,13 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                          'width' => 350,
                       )),
                       1 => 
-                      \Pimcore\Model\DataObject\ClassDefinition\Data\ImageGallery::__set_state(array(
+                      Pimcore\Model\DataObject\ClassDefinition\Data\ImageGallery::__set_state(array(
                          'name' => 'cadModel',
                          'title' => '3 D  / C A D   Model',
                          'tooltip' => '',
                          'mandatory' => false,
                          'noteditable' => false,
-                         'index' => 0,
+                         'index' => false,
                          'locked' => false,
                          'style' => 'margin-left:40px',
                          'permissions' => NULL,
@@ -1707,7 +1707,7 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                      'labelAlign' => 'left',
                   )),
                   2 => 
-                  \Pimcore\Model\DataObject\ClassDefinition\Layout\Fieldcontainer::__set_state(array(
+                  Pimcore\Model\DataObject\ClassDefinition\Layout\Fieldcontainer::__set_state(array(
                      'name' => 'Field Container',
                      'type' => NULL,
                      'region' => NULL,
@@ -1721,13 +1721,13 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                      'children' => 
                     array (
                       0 => 
-                      \Pimcore\Model\DataObject\ClassDefinition\Data\ImageGallery::__set_state(array(
+                      Pimcore\Model\DataObject\ClassDefinition\Data\ImageGallery::__set_state(array(
                          'name' => 'isometricImage',
                          'title' => 'Isometric Image',
                          'tooltip' => '',
                          'mandatory' => false,
                          'noteditable' => false,
-                         'index' => 0,
+                         'index' => false,
                          'locked' => false,
                          'style' => '',
                          'permissions' => NULL,
@@ -1747,13 +1747,13 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                          'width' => 350,
                       )),
                       1 => 
-                      \Pimcore\Model\DataObject\ClassDefinition\Data\ImageGallery::__set_state(array(
+                      Pimcore\Model\DataObject\ClassDefinition\Data\ImageGallery::__set_state(array(
                          'name' => 'warningImage',
                          'title' => 'Warning image',
                          'tooltip' => '',
                          'mandatory' => false,
                          'noteditable' => false,
-                         'index' => 0,
+                         'index' => false,
                          'locked' => false,
                          'style' => 'margin-left:40px',
                          'permissions' => NULL,
@@ -1793,7 +1793,7 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                  'labelAlign' => 'left',
               )),
               1 => 
-              \Pimcore\Model\DataObject\ClassDefinition\Layout\Fieldset::__set_state(array(
+              Pimcore\Model\DataObject\ClassDefinition\Layout\Fieldset::__set_state(array(
                  'name' => 'Layout',
                  'type' => NULL,
                  'region' => NULL,
@@ -1807,13 +1807,13 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                  'children' => 
                 array (
                   0 => 
-                  \Pimcore\Model\DataObject\ClassDefinition\Data\ImageGallery::__set_state(array(
+                  Pimcore\Model\DataObject\ClassDefinition\Data\ImageGallery::__set_state(array(
                      'name' => 'galleryImage',
                      'title' => 'Gallery Image',
                      'tooltip' => '',
                      'mandatory' => false,
                      'noteditable' => false,
-                     'index' => 0,
+                     'index' => false,
                      'locked' => false,
                      'style' => '',
                      'permissions' => NULL,
@@ -1842,7 +1842,7 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                  'labelAlign' => 'left',
               )),
               2 => 
-              \Pimcore\Model\DataObject\ClassDefinition\Layout\Fieldset::__set_state(array(
+              Pimcore\Model\DataObject\ClassDefinition\Layout\Fieldset::__set_state(array(
                  'name' => 'Video',
                  'type' => NULL,
                  'region' => NULL,
@@ -1856,13 +1856,13 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                  'children' => 
                 array (
                   0 => 
-                  \Pimcore\Model\DataObject\ClassDefinition\Data\Video::__set_state(array(
+                  Pimcore\Model\DataObject\ClassDefinition\Data\Video::__set_state(array(
                      'name' => 'productVideo',
                      'title' => 'Product Video',
                      'tooltip' => '',
                      'mandatory' => false,
                      'noteditable' => false,
-                     'index' => 0,
+                     'index' => false,
                      'locked' => false,
                      'style' => '',
                      'permissions' => NULL,
@@ -1898,7 +1898,7 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                  'labelAlign' => 'left',
               )),
               3 => 
-              \Pimcore\Model\DataObject\ClassDefinition\Layout\Fieldset::__set_state(array(
+              Pimcore\Model\DataObject\ClassDefinition\Layout\Fieldset::__set_state(array(
                  'name' => 'Documents',
                  'type' => NULL,
                  'region' => NULL,
@@ -1912,7 +1912,7 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                  'children' => 
                 array (
                   0 => 
-                  \Pimcore\Model\DataObject\ClassDefinition\Layout\Fieldcontainer::__set_state(array(
+                  Pimcore\Model\DataObject\ClassDefinition\Layout\Fieldcontainer::__set_state(array(
                      'name' => 'Field Container',
                      'type' => NULL,
                      'region' => NULL,
@@ -1926,13 +1926,13 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                      'children' => 
                     array (
                       0 => 
-                      \Pimcore\Model\DataObject\ClassDefinition\Data\ManyToOneRelation::__set_state(array(
+                      Pimcore\Model\DataObject\ClassDefinition\Data\ManyToOneRelation::__set_state(array(
                          'name' => 'productBrochure',
                          'title' => 'Product Brochure',
                          'tooltip' => '',
                          'mandatory' => false,
                          'noteditable' => false,
-                         'index' => 0,
+                         'index' => false,
                          'locked' => false,
                          'style' => '',
                          'permissions' => NULL,
@@ -1975,7 +1975,7 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                      'labelAlign' => 'left',
                   )),
                   1 => 
-                  \Pimcore\Model\DataObject\ClassDefinition\Layout\Fieldcontainer::__set_state(array(
+                  Pimcore\Model\DataObject\ClassDefinition\Layout\Fieldcontainer::__set_state(array(
                      'name' => 'Field Container',
                      'type' => NULL,
                      'region' => NULL,
@@ -1989,13 +1989,13 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                      'children' => 
                     array (
                       0 => 
-                      \Pimcore\Model\DataObject\ClassDefinition\Data\ManyToOneRelation::__set_state(array(
+                      Pimcore\Model\DataObject\ClassDefinition\Data\ManyToOneRelation::__set_state(array(
                          'name' => 'productCatalog',
                          'title' => 'Product Catalog',
                          'tooltip' => '',
                          'mandatory' => false,
                          'noteditable' => false,
-                         'index' => 0,
+                         'index' => false,
                          'locked' => false,
                          'style' => '',
                          'permissions' => NULL,
@@ -2038,7 +2038,7 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                      'labelAlign' => 'left',
                   )),
                   2 => 
-                  \Pimcore\Model\DataObject\ClassDefinition\Layout\Fieldcontainer::__set_state(array(
+                  Pimcore\Model\DataObject\ClassDefinition\Layout\Fieldcontainer::__set_state(array(
                      'name' => 'Field Container',
                      'type' => NULL,
                      'region' => NULL,
@@ -2052,13 +2052,13 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                      'children' => 
                     array (
                       0 => 
-                      \Pimcore\Model\DataObject\ClassDefinition\Data\ManyToOneRelation::__set_state(array(
+                      Pimcore\Model\DataObject\ClassDefinition\Data\ManyToOneRelation::__set_state(array(
                          'name' => 'compatibilityChart',
                          'title' => 'Compatibility Chart',
                          'tooltip' => '',
                          'mandatory' => false,
                          'noteditable' => false,
-                         'index' => 0,
+                         'index' => false,
                          'locked' => false,
                          'style' => '',
                          'permissions' => NULL,
@@ -2122,7 +2122,7 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'labelAlign' => 'left',
           )),
           4 => 
-          \Pimcore\Model\DataObject\ClassDefinition\Layout\Panel::__set_state(array(
+          Pimcore\Model\DataObject\ClassDefinition\Layout\Panel::__set_state(array(
              'name' => 'Attribute',
              'type' => NULL,
              'region' => NULL,
@@ -2136,7 +2136,7 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'children' => 
             array (
               0 => 
-              \Pimcore\Model\DataObject\ClassDefinition\Layout\Fieldset::__set_state(array(
+              Pimcore\Model\DataObject\ClassDefinition\Layout\Fieldset::__set_state(array(
                  'name' => 'Layout',
                  'type' => NULL,
                  'region' => NULL,
@@ -2150,13 +2150,13 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                  'children' => 
                 array (
                   0 => 
-                  \Pimcore\Model\DataObject\ClassDefinition\Data\Classificationstore::__set_state(array(
+                  Pimcore\Model\DataObject\ClassDefinition\Data\Classificationstore::__set_state(array(
                      'name' => 'Attribute',
                      'title' => 'Attribute',
                      'tooltip' => '',
                      'mandatory' => false,
                      'noteditable' => false,
-                     'index' => 0,
+                     'index' => false,
                      'locked' => false,
                      'style' => '',
                      'permissions' => NULL,
@@ -2212,7 +2212,7 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'labelAlign' => 'left',
           )),
           5 => 
-          \Pimcore\Model\DataObject\ClassDefinition\Layout\Panel::__set_state(array(
+          Pimcore\Model\DataObject\ClassDefinition\Layout\Panel::__set_state(array(
              'name' => 'Description',
              'type' => NULL,
              'region' => NULL,
@@ -2226,7 +2226,7 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'children' => 
             array (
               0 => 
-              \Pimcore\Model\DataObject\ClassDefinition\Layout\Fieldset::__set_state(array(
+              Pimcore\Model\DataObject\ClassDefinition\Layout\Fieldset::__set_state(array(
                  'name' => 'Layout',
                  'type' => NULL,
                  'region' => NULL,
@@ -2240,7 +2240,7 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                  'children' => 
                 array (
                   0 => 
-                  \Pimcore\Model\DataObject\ClassDefinition\Layout\Fieldcontainer::__set_state(array(
+                  Pimcore\Model\DataObject\ClassDefinition\Layout\Fieldcontainer::__set_state(array(
                      'name' => 'Field Container',
                      'type' => NULL,
                      'region' => NULL,
@@ -2254,13 +2254,13 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                      'children' => 
                     array (
                       0 => 
-                      \Pimcore\Model\DataObject\ClassDefinition\Data\Textarea::__set_state(array(
+                      Pimcore\Model\DataObject\ClassDefinition\Data\Textarea::__set_state(array(
                          'name' => 'productName',
                          'title' => 'Product Name',
                          'tooltip' => '',
                          'mandatory' => false,
                          'noteditable' => false,
-                         'index' => 0,
+                         'index' => false,
                          'locked' => false,
                          'style' => '',
                          'permissions' => NULL,
@@ -2290,7 +2290,7 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                      'labelAlign' => 'left',
                   )),
                   1 => 
-                  \Pimcore\Model\DataObject\ClassDefinition\Layout\Fieldcontainer::__set_state(array(
+                  Pimcore\Model\DataObject\ClassDefinition\Layout\Fieldcontainer::__set_state(array(
                      'name' => 'Field Container',
                      'type' => NULL,
                      'region' => NULL,
@@ -2304,13 +2304,13 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                      'children' => 
                     array (
                       0 => 
-                      \Pimcore\Model\DataObject\ClassDefinition\Data\Textarea::__set_state(array(
+                      Pimcore\Model\DataObject\ClassDefinition\Data\Textarea::__set_state(array(
                          'name' => 'shortDescriptions',
                          'title' => 'Short Description',
                          'tooltip' => '',
                          'mandatory' => false,
                          'noteditable' => false,
-                         'index' => 0,
+                         'index' => false,
                          'locked' => false,
                          'style' => '',
                          'permissions' => NULL,
@@ -2340,7 +2340,7 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                      'labelAlign' => 'left',
                   )),
                   2 => 
-                  \Pimcore\Model\DataObject\ClassDefinition\Layout\Fieldcontainer::__set_state(array(
+                  Pimcore\Model\DataObject\ClassDefinition\Layout\Fieldcontainer::__set_state(array(
                      'name' => 'Field Container',
                      'type' => NULL,
                      'region' => NULL,
@@ -2354,13 +2354,13 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                      'children' => 
                     array (
                       0 => 
-                      \Pimcore\Model\DataObject\ClassDefinition\Data\Textarea::__set_state(array(
+                      Pimcore\Model\DataObject\ClassDefinition\Data\Textarea::__set_state(array(
                          'name' => 'longDescriptions',
                          'title' => 'Long Description',
                          'tooltip' => '',
                          'mandatory' => false,
                          'noteditable' => false,
-                         'index' => 0,
+                         'index' => false,
                          'locked' => false,
                          'style' => '',
                          'permissions' => NULL,
@@ -2390,7 +2390,7 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                      'labelAlign' => 'left',
                   )),
                   3 => 
-                  \Pimcore\Model\DataObject\ClassDefinition\Layout\Fieldcontainer::__set_state(array(
+                  Pimcore\Model\DataObject\ClassDefinition\Layout\Fieldcontainer::__set_state(array(
                      'name' => 'Field Container',
                      'type' => NULL,
                      'region' => NULL,
@@ -2404,13 +2404,13 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                      'children' => 
                     array (
                       0 => 
-                      \Pimcore\Model\DataObject\ClassDefinition\Data\Wysiwyg::__set_state(array(
+                      Pimcore\Model\DataObject\ClassDefinition\Data\Wysiwyg::__set_state(array(
                          'name' => 'featuresAndBenefit',
                          'title' => 'Feature & Benefit Bullets',
                          'tooltip' => '',
                          'mandatory' => false,
                          'noteditable' => false,
-                         'index' => 0,
+                         'index' => false,
                          'locked' => false,
                          'style' => 'margin-left:380px',
                          'permissions' => NULL,
@@ -2461,7 +2461,7 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'labelAlign' => 'left',
           )),
           6 => 
-          \Pimcore\Model\DataObject\ClassDefinition\Layout\Panel::__set_state(array(
+          Pimcore\Model\DataObject\ClassDefinition\Layout\Panel::__set_state(array(
              'name' => 'SEO',
              'type' => NULL,
              'region' => NULL,
@@ -2475,7 +2475,7 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'children' => 
             array (
               0 => 
-              \Pimcore\Model\DataObject\ClassDefinition\Layout\Fieldset::__set_state(array(
+              Pimcore\Model\DataObject\ClassDefinition\Layout\Fieldset::__set_state(array(
                  'name' => 'Layout',
                  'type' => NULL,
                  'region' => NULL,
@@ -2489,7 +2489,7 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                  'children' => 
                 array (
                   0 => 
-                  \Pimcore\Model\DataObject\ClassDefinition\Layout\Fieldcontainer::__set_state(array(
+                  Pimcore\Model\DataObject\ClassDefinition\Layout\Fieldcontainer::__set_state(array(
                      'name' => 'Field Container',
                      'type' => NULL,
                      'region' => NULL,
@@ -2503,13 +2503,13 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                      'children' => 
                     array (
                       0 => 
-                      \Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
+                      Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
                          'name' => 'urlSlug',
                          'title' => 'URL Slug',
                          'tooltip' => '',
                          'mandatory' => false,
                          'noteditable' => false,
-                         'index' => 0,
+                         'index' => false,
                          'locked' => false,
                          'style' => '',
                          'permissions' => NULL,
@@ -2544,7 +2544,7 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                      'labelAlign' => 'left',
                   )),
                   1 => 
-                  \Pimcore\Model\DataObject\ClassDefinition\Layout\Fieldcontainer::__set_state(array(
+                  Pimcore\Model\DataObject\ClassDefinition\Layout\Fieldcontainer::__set_state(array(
                      'name' => 'Field Container',
                      'type' => NULL,
                      'region' => NULL,
@@ -2558,13 +2558,13 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                      'children' => 
                     array (
                       0 => 
-                      \Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
+                      Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
                          'name' => 'metaTitle',
                          'title' => 'Meta Title',
                          'tooltip' => '',
                          'mandatory' => false,
                          'noteditable' => false,
-                         'index' => 0,
+                         'index' => false,
                          'locked' => false,
                          'style' => '',
                          'permissions' => NULL,
@@ -2599,7 +2599,7 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                      'labelAlign' => 'left',
                   )),
                   2 => 
-                  \Pimcore\Model\DataObject\ClassDefinition\Layout\Fieldcontainer::__set_state(array(
+                  Pimcore\Model\DataObject\ClassDefinition\Layout\Fieldcontainer::__set_state(array(
                      'name' => 'Field Container',
                      'type' => NULL,
                      'region' => NULL,
@@ -2613,13 +2613,13 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                      'children' => 
                     array (
                       0 => 
-                      \Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
+                      Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
                          'name' => 'metaDescription',
                          'title' => 'Meta Description',
                          'tooltip' => '',
                          'mandatory' => false,
                          'noteditable' => false,
-                         'index' => 0,
+                         'index' => false,
                          'locked' => false,
                          'style' => '',
                          'permissions' => NULL,
@@ -2654,7 +2654,7 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                      'labelAlign' => 'left',
                   )),
                   3 => 
-                  \Pimcore\Model\DataObject\ClassDefinition\Layout\Fieldcontainer::__set_state(array(
+                  Pimcore\Model\DataObject\ClassDefinition\Layout\Fieldcontainer::__set_state(array(
                      'name' => 'Field Container',
                      'type' => NULL,
                      'region' => NULL,
@@ -2668,13 +2668,13 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                      'children' => 
                     array (
                       0 => 
-                      \Pimcore\Model\DataObject\ClassDefinition\Data\Textarea::__set_state(array(
+                      Pimcore\Model\DataObject\ClassDefinition\Data\Textarea::__set_state(array(
                          'name' => 'Keywords',
                          'title' => 'Keywords',
                          'tooltip' => '',
                          'mandatory' => false,
                          'noteditable' => false,
-                         'index' => 0,
+                         'index' => false,
                          'locked' => false,
                          'style' => '',
                          'permissions' => NULL,
@@ -2725,7 +2725,7 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'labelAlign' => 'left',
           )),
           7 => 
-          \Pimcore\Model\DataObject\ClassDefinition\Layout\Panel::__set_state(array(
+          Pimcore\Model\DataObject\ClassDefinition\Layout\Panel::__set_state(array(
              'name' => 'Other details',
              'type' => NULL,
              'region' => NULL,
@@ -2739,7 +2739,7 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'children' => 
             array (
               0 => 
-              \Pimcore\Model\DataObject\ClassDefinition\Layout\Fieldset::__set_state(array(
+              Pimcore\Model\DataObject\ClassDefinition\Layout\Fieldset::__set_state(array(
                  'name' => 'Layout',
                  'type' => NULL,
                  'region' => NULL,
@@ -2753,7 +2753,7 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                  'children' => 
                 array (
                   0 => 
-                  \Pimcore\Model\DataObject\ClassDefinition\Layout\Fieldcontainer::__set_state(array(
+                  Pimcore\Model\DataObject\ClassDefinition\Layout\Fieldcontainer::__set_state(array(
                      'name' => 'Field Container',
                      'type' => NULL,
                      'region' => NULL,
@@ -2767,13 +2767,13 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                      'children' => 
                     array (
                       0 => 
-                      \Pimcore\Model\DataObject\ClassDefinition\Data\Select::__set_state(array(
+                      Pimcore\Model\DataObject\ClassDefinition\Data\Select::__set_state(array(
                          'name' => 'Proposition65',
                          'title' => 'Proposition 65',
                          'tooltip' => '',
                          'mandatory' => false,
                          'noteditable' => false,
-                         'index' => 0,
+                         'index' => false,
                          'locked' => false,
                          'style' => '',
                          'permissions' => NULL,
@@ -2818,7 +2818,7 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                      'labelAlign' => 'left',
                   )),
                   1 => 
-                  \Pimcore\Model\DataObject\ClassDefinition\Layout\Fieldcontainer::__set_state(array(
+                  Pimcore\Model\DataObject\ClassDefinition\Layout\Fieldcontainer::__set_state(array(
                      'name' => 'Field Container',
                      'type' => NULL,
                      'region' => NULL,
@@ -2832,13 +2832,13 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                      'children' => 
                     array (
                       0 => 
-                      \Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
+                      Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
                          'name' => 'standards',
                          'title' => 'Standards',
                          'tooltip' => '',
                          'mandatory' => false,
                          'noteditable' => false,
-                         'index' => 0,
+                         'index' => false,
                          'locked' => false,
                          'style' => '',
                          'permissions' => NULL,
@@ -2873,7 +2873,7 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                      'labelAlign' => 'left',
                   )),
                   2 => 
-                  \Pimcore\Model\DataObject\ClassDefinition\Layout\Fieldcontainer::__set_state(array(
+                  Pimcore\Model\DataObject\ClassDefinition\Layout\Fieldcontainer::__set_state(array(
                      'name' => 'Field Container',
                      'type' => NULL,
                      'region' => NULL,
@@ -2887,13 +2887,13 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                      'children' => 
                     array (
                       0 => 
-                      \Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
+                      Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
                          'name' => 'approvals',
                          'title' => 'Approvals',
                          'tooltip' => '',
                          'mandatory' => false,
                          'noteditable' => false,
-                         'index' => 0,
+                         'index' => false,
                          'locked' => false,
                          'style' => '',
                          'permissions' => NULL,
@@ -2928,7 +2928,7 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                      'labelAlign' => 'left',
                   )),
                   3 => 
-                  \Pimcore\Model\DataObject\ClassDefinition\Layout\Fieldcontainer::__set_state(array(
+                  Pimcore\Model\DataObject\ClassDefinition\Layout\Fieldcontainer::__set_state(array(
                      'name' => 'Field Container',
                      'type' => NULL,
                      'region' => NULL,
@@ -2942,13 +2942,13 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                      'children' => 
                     array (
                       0 => 
-                      \Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
+                      Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
                          'name' => 'certifications',
                          'title' => 'Certifications',
                          'tooltip' => '',
                          'mandatory' => false,
                          'noteditable' => false,
-                         'index' => 0,
+                         'index' => false,
                          'locked' => false,
                          'style' => '',
                          'permissions' => NULL,
@@ -2983,7 +2983,7 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                      'labelAlign' => 'left',
                   )),
                   4 => 
-                  \Pimcore\Model\DataObject\ClassDefinition\Layout\Fieldcontainer::__set_state(array(
+                  Pimcore\Model\DataObject\ClassDefinition\Layout\Fieldcontainer::__set_state(array(
                      'name' => 'Field Container',
                      'type' => NULL,
                      'region' => NULL,
@@ -2997,13 +2997,13 @@ return \Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                      'children' => 
                     array (
                       0 => 
-                      \Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
+                      Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
                          'name' => 'warranty',
                          'title' => 'Warranty',
                          'tooltip' => '',
                          'mandatory' => false,
                          'noteditable' => false,
-                         'index' => 0,
+                         'index' => false,
                          'locked' => false,
                          'style' => '',
                          'permissions' => NULL,

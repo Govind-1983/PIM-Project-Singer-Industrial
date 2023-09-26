@@ -1,0 +1,47 @@
+pimcore_custom_reports:
+    definitions:
+        sku_count_report_by_vendor:
+            name: sku_count_report_by_vendor
+            sql: ''
+            dataSourceConfig:
+                -
+                    sql: 'count(*), oc.name'
+                    from: 'object_collection_channels_product  col left join object_relations_product rel on col.id = src_id left join object_channels oc on rel.dest_id = oc.oo_id'
+                    where: "ownertype = 'fieldcollection' and rel.fieldname = 'channel'"
+                    groupby: oc.name
+                    type: sql
+            columnConfiguration:
+                -
+                    name: name
+                    display: true
+                    export: true
+                    order: true
+                    width: ''
+                    label: ''
+                    filter_drilldown: filter_and_show
+                    id: extModel419-5
+                -
+                    name: 'count(*)'
+                    display: true
+                    export: true
+                    order: true
+                    width: ''
+                    label: ''
+                    id: extModel419-6
+            niceName: ''
+            group: ''
+            groupIconClass: ''
+            iconClass: ''
+            menuShortcut: true
+            reportClass: ''
+            chartType: line
+            pieColumn: null
+            pieLabelColumn: null
+            xAxis: name
+            yAxis:
+                - total
+            modificationDate: 1694679084
+            creationDate: 1694598915
+            shareGlobally: true
+            sharedUserNames: {  }
+            sharedRoleNames: {  }
