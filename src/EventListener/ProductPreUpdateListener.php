@@ -37,11 +37,11 @@ class ProductPreUpdateListener
                 $object->setKey($ssin);
             }
 
-            if ($object instanceof DataObject\Product && $object->getWorkflowState() == self::WORKFLOW_STATE_TO_MASTER_CATALOG
-                && !str_contains($object->getCurrentFullPath(), self::WORKFLOW_STATE_TO_MASTER_CATALOG)
-            ) {
-                $object->setParent($this->getFolderPath());
-            }
+            // if ($object instanceof DataObject\Product && $object->getWorkflowState() == self::WORKFLOW_STATE_TO_MASTER_CATALOG
+            //     && !str_contains($object->getCurrentFullPath(), self::WORKFLOW_STATE_TO_MASTER_CATALOG)
+            // ) {
+            //     $object->setParent($this->getFolderPath());
+            // }
 
             if ($object instanceof DataObject\Product && $object->getPublished() == true) {
                 foreach ($object->getChannelDetails()->getItems() as $channel) {
@@ -100,7 +100,7 @@ class ProductPreUpdateListener
                             if (!empty($mapper)) {
                                 $this->isMappingAvailable = true;
                                 $mappingJson = $mapper->getMappingValue();
-                                $this->mapping  = json_decode($mappingJson,1 );
+                                $this->mapping  = json_decode($mappingJson, 1);
                             }
                         }
 
@@ -212,9 +212,11 @@ class ProductPreUpdateListener
                         }
 
                         if ($this->isMappingAvailable && !empty($this->mapping)) {
-                            foreach($attributesArray as $key =>  $attribute) {
-                                if (!in_array($attribute['name'], $this->mapping['classAttribute'])
-                                && !in_array($attribute['name'], $this->mapping['taxonomyAttribute'])) {
+                            foreach ($attributesArray as $key =>  $attribute) {
+                                if (
+                                    !in_array($attribute['name'], $this->mapping['classAttribute'])
+                                    && !in_array($attribute['name'], $this->mapping['taxonomyAttribute'])
+                                ) {
                                     unset($attributesArray[$key]);
                                 }
                             }
@@ -255,7 +257,7 @@ class ProductPreUpdateListener
                             'description' => $object->getLongDescriptions() . "\n" . $object->getFeaturesAndBenefit(),
                             'stock_status' => (string)$stockStatus,
                             'weight' => $object->getPackageWeight(),
-                            'slug' => $object->getUrlSlug(),
+                            //'slug' => $object->getUrlSlug(),
                             'dimensions' => [
                                 'length' => (string)$object->getPackageLength(),
                                 'width' => (string)$object->getPackageWidth(),
@@ -287,8 +289,7 @@ class ProductPreUpdateListener
 
                             $sig = $oauth->generateSignature('PUT', $url);
 
-                            $header = array
-                            (
+                            $header = array(
                                 'Content-Type: application/json',
                                 'Connection: keep-alive',
                                 'Keep-Alive: 800000',
@@ -330,8 +331,7 @@ class ProductPreUpdateListener
 
                             $sig = $oauth->generateSignature('POST', $url);
 
-                            $header = array
-                            (
+                            $header = array(
                                 'Content-Type: application/json',
                                 'Connection: keep-alive',
                                 'Keep-Alive: 800000',
@@ -366,13 +366,9 @@ class ProductPreUpdateListener
 
                             curl_close($curl);
                         }
-
                     }
-
-
                 }
             }
-
         }
     }
 
@@ -394,8 +390,7 @@ class ProductPreUpdateListener
         $oauth->setNonce($nonce);
         $sig = $oauth->generateSignature('GET', $url);
 
-        $header = array
-        (
+        $header = array(
             'Content-Type: application/json',
             'Connection: keep-alive',
             'Keep-Alive: 800000',
@@ -439,8 +434,7 @@ class ProductPreUpdateListener
 
         $sig = $oauth->generateSignature('POST', $url);
 
-        $header = array
-        (
+        $header = array(
             'Content-Type: application/json',
             'Connection: keep-alive',
             'Keep-Alive: 800000',
@@ -479,7 +473,8 @@ class ProductPreUpdateListener
     }
 
 
-    protected function getMapper($taxonomyName, $channelName) {
+    protected function getMapper($taxonomyName, $channelName)
+    {
         $listing = new DataObject\TaxonomyChannelMapper\Listing();
         $listing->filterByChannelName(['id' => $channelName, 'type' => 'object']);
         $listing->filterByTaxonomyName(['id' => $taxonomyName, 'type' => 'object']);
@@ -487,7 +482,5 @@ class ProductPreUpdateListener
         $listing->setLimit(1);
         $mapperObj = $listing->load();
         return (!empty($mapperObj)) ? $mapperObj[0] : null;
-
-
     }
 }
