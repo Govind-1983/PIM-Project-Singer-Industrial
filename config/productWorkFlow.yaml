@@ -142,7 +142,7 @@ pimcore:
                     - condition: "is_fully_authenticated() and 'ROLE_PIMCORE_ADMIN' in role_names"
                       modify: true
                     - condition: "is_fully_authenticated() and 'ROLE_CHANNEL_CATALOG_MANAGER' in role_names"
-                      publish: false
+                      publish: true
                       delete: false
                       save: true
                     - modify: false
